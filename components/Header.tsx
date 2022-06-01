@@ -37,21 +37,29 @@ function LeftHeader() {
 }
 
 function MiddleHeader({ links }) {
+
+  // function handleClick(props) {
+  //   console.log(props);
+  // }
+
   return (
     <div className="middle_header">
       {links.map((val) => (
-        <li key={val.text}>
+        <li key={val.text} id={val.text}>
           <Link href={val.href}>
             <>
               <h3>{val.text}</h3>
 
-              <Image
-                src="/down-arrow.png"
-                alt="down arrow"
-                height="20"
-                width="20"
-                className="down_arrow"
-              />
+              <span className="down_arrow">
+
+                <Image
+                  src="/down-arrow.png"
+                  alt="down arrow"
+                  height="20"
+                  width="20"
+                />
+              </span>
+
             </>
           </Link>
         </li>

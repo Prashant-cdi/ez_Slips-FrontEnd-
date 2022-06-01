@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function Emailheader() {
     return (
       <div className="email_header">
@@ -11,7 +12,7 @@ function Emailheader() {
 function Emailbody() {
   return (
     <div className="email_body">
-      
+
     </div>
     )
 }

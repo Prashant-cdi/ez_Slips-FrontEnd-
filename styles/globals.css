@@ -18,6 +18,11 @@ a {
   font-family: 'Montserrat', sans-serif;
 }
 
+
+.flex {
+  display:flex;
+}
+
 .header {
   height: 100px;
   width: 100%;
@@ -36,17 +41,18 @@ a {
   align-items: center;
   justify-content: center;
   font-family: Racing Sans One;
-
-
 }
 
 .left_header_h1 {
-  
   font-size: 40px;
   font-weight: 400;
   line-height: 50px;
   letter-spacing: 0em;
   color: #47a296;
+}
+
+.left_header_h1:hover {
+  cursor: pointer;
 }
 
 .main_logo{
@@ -70,17 +76,25 @@ a {
   align-items: center;
   display: flex;
   position: relative;
+  justify-content: center;
+  border-top: 3px solid white;
 }
+
 .down_arrow {
-  color:#47a296;
-  z-index: 2;
-  background-color: white;
-  top:10px
+  color: #47a296;
+  position: absolute;
+  bottom: 0px;
+  display: none;
 }
 
 .middle_header li:hover {
   border-top: 3px solid #47a296;
+  cursor: pointer;
 }
+
+.middle_header li:hover .down_arrow {
+  display: block;
+}   
 
 .right_header {
   width: 30%;
@@ -116,22 +130,28 @@ a {
   align-items: center;
   
 }
+
 .right_banner {
   width: 50%;
 }
+
 .banner_img {
   width: 100%;
 }
+
+
 .left_banner{
   background-color: #216277;
   color:white
 }
+
 .left_banner_h1{
   font-family: Montserrat;
   font-size: 50px;
 font-weight: 700;
 line-height: 64px;
 }
+
 
 .left_banner_p {
   width: 457px;
@@ -166,8 +186,48 @@ line-height: 64px;
 .features {
   height:535px;
   background-color: #F6F8FA;
+  text-align: center;
 }
 
+.features_h1{
+  text-align: center;
+  display: inline-block;
+  margin: 60px 0;
+}
+
+.features_h1:hover {
+border-bottom: 3px solid #47a296;
+}
+
+.features_div{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 100px;
+}
+
+.featuresbox{
+  width:25%;
+}
+
+.featuresbox_h1 {
+  padding: 10px;
+}
+
+.featuresbox p {
+  font-size: 18px;
+}
+
+.whyworkharddiv{
+height: 736px;
+background-color: #F6F8FA;
+padding: 30px 0px;
+}
+
+.image_div{
+position: relative;
+height: 75%;
+width: 100%;
+}
 
 /* css for email template page  */
 
@@ -176,11 +236,114 @@ line-height: 64px;
   justify-content:center; 
   width: 600px;
 }
+
 .email_header {
   height: 80px;
-  
 }
 
 .email_body {
   height: 480px;
+}
+.security {
+  display:flex;
+  width: 100%;
+  height: 440px;
+}
+
+.security_left{
+  width: 50%;
+}
+
+.security_right{
+  width: 50%;
+  position: relative;
+}
+
+.biometric_image {
+  width : 100% !important;
+}
+
+.below_image_div {
+  padding: 30px;
+  background-color: #E2E2E3;
+  text-align: center;
+}
+
+.below_image_div h2 {
+  padding: 3px 0 10px 0;
+  color: #707070;
+  text-align: center;
+  font-size: 28px;
+}
+
+.below_image_div p 
+{
+  width: 34.5%;
+  margin: auto;
+}
+
+/* this is for setup div */
+
+
+.setup {
+  height: 400px;
+  padding:40px 0px;
+  text-align: center;
+}
+
+
+.setup h2{
+  padding: 10px 0;
+}
+
+.setup_child {
+  width: 33%;
+  height: 250px;
+  padding: 50px 0;
+}
+
+.setup_child h3{
+  padding: 30px 0 0 0;
+  font-family: Montserrat;
+font-size: 20px;
+font-weight: 400;
+}
+
+.setup_child h2
+{
+  font-family: Montserrat;
+font-size: 20px;
+font-weight: 500;
+line-height: 24px;
+
+}
+
+.setup_child p{
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 32px;
+  padding: 0 110px;
+}
+
+.circle {
+  background-color: #AFD7D2;
+  border-radius: 100%;
+  display: flex;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.setup_images {
+  position: absolute;
+  align-self: center;
+}
+
+
+.thanks_div {
+  height: 700px;
 }
