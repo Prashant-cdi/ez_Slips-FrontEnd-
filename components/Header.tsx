@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Header.module.css";
 import Image from "next/image";
 const links = [
   {
@@ -26,10 +26,10 @@ const links = [
 ];
 function LeftHeader() {
   return (
-    <div className="left_header">
-      <h1 className="left_header_h1">
+    <div className={styles.left_header}>
+      <h1 className={styles.left_header_h1}>
         <Link href="/pages/index">
-          <span className="main_logo">ezSlips</span>
+          <span className={styles.main_logo}>ezSlips</span>
         </Link>
       </h1>
     </div>
@@ -43,17 +43,17 @@ function MiddleHeader({ links }) {
   // }
 
   return (
-    <div className="middle_header">
+    <div className={styles.middle_header}>
       {links.map((val) => (
         <li key={val.text} id={val.text}>
           <Link href={val.href}>
             <>
               <h3>{val.text}</h3>
 
-              <span className="down_arrow">
+              <span className={styles.down_arrow}>
 
                 <Image
-                  src="/down-arrow.png"
+                  src="/assets/images/down-arrow.png"
                   alt="down arrow"
                   height="20"
                   width="20"
@@ -70,11 +70,11 @@ function MiddleHeader({ links }) {
 
 function RightHeader() {
   return (
-    <div className="right_header">
+    <div className={styles.right_header}>
       <li>
         <Link href="/pages/signin">Sign In</Link>
       </li>
-      <span className="spanbutton">
+      <span className={styles.spanbutton}>
         <Link href="/pages/signup">
           <button>Sign Up</button>
         </Link>
@@ -85,11 +85,12 @@ function RightHeader() {
 
 const Header = () => {
   return (
-    <>
+    <div className={styles.header}>
+
       <LeftHeader />
       <MiddleHeader links={links} />
       <RightHeader />
-    </>
+    </div>
   );
 };
 

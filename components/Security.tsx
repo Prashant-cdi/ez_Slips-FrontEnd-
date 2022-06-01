@@ -1,9 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
+import styles from "../styles/Security.module.css";
 
 function SecurityLeft() {
     return(
-        <div className="security_left">
+        <div className={styles.security_left}>
 asdasasd
         </div>
     )
@@ -11,12 +12,13 @@ asdasasd
 
 function SecurityRight() {
     return(
-        <div className="security_right">
+        <div className={styles.security_right}>
             
             <Image 
-            className="biometric_image"
-            src="/biometric.png"
+            className={styles.biometric_image}
+            src="/assets/images/biometric.png"
             layout='fill'
+            alt='biometric'
            />
 
             
@@ -26,7 +28,7 @@ function SecurityRight() {
 
 const Security = () => {
   return (
-    <div className="security">
+    <div className={styles.security}>
         <SecurityLeft />
         <SecurityRight />
     </div>
