@@ -15,6 +15,7 @@ function WhyImageDiv() {
             <h1>Why work Hard</h1>
             <h2>When ezSlips Can work Smart For you</h2>
             <p>And the setup takes less time than what it would take for you to read this! After all, your time is valuable.</p>
+            <p>test coomit</p>
         </div>
         </div>
 
