@@ -18,4 +18,20 @@
     width : 100% !important;
   
   }
+
+  .security_left_content{
+    margin: 120px 110px 0 200px;
+    
+  }
+
+  .security_left_content h2
+  {
+    margin: 20px 0px;
+  }
+
+  .security_left_content p
+  {
+    margin: 20px 0px;
+    color: #505050;
+  }
   

@@ -1,0 +1,90 @@
+.mainfooter {
+    padding: 20px 0 50px 0;
+}
+.footer {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+ 
+.footerLogo {
+    font-family: Racing Sans One;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 50px;
+    color: #47A296;
+    margin: 0px 0 0px 160px;
+    display: inline-block;
+}
+
+.middlefooter{
+    margin-left: 85px;
+    display: flex;
+}
+
+.rightfooter {
+    width: 220px;
+    right: 91px;
+    position: absolute;
+  
+}
+
+.rightfooter p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+
+.footerlink{
+    width: 125px;
+    margin: 0 15px auto;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.right_header {
+    width: 30%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .right_header li {
+    padding-left: 140px;
+    color: #47a296;
+  }
+  
+  .spanbutton button {
+    height: 48px;
+    margin-left: 45.5px;
+    width: 112px;
+    background: #47a296;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .footer2nd{
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .footerbuttondiv {
+    display: flex;
+    align-items: center;
+    margin-left: 28%;
+    list-style-type: none;
+  }
+
+  .rightfooter2
+  {
+    width: 220px;
+    right: 91px;
+    position: absolute;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;  
+  }

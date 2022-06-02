@@ -15,7 +15,7 @@ const customStyleh1 = {
 
 function Partner(props) {
   return (
-    <h2 key={props.key}>{props.value}</h2>
+    <h2 >{props.value}</h2>
   )
 }
 

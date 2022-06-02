@@ -2,7 +2,14 @@ import React from "react";
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
 import Image from "next/image";
-const links = [
+
+
+interface Links {
+  text: string;
+  href: string;
+}
+
+const links: Links[] = [
   {
     text: "Product",
     href: "/pages/products",
@@ -24,28 +31,28 @@ const links = [
     href: "/pages/pricing",
   },
 ];
+
+
+
+ 
 function LeftHeader() {
   return (
     <div className={styles.left_header}>
-      <h1 className={styles.left_header_h1}>
+      <div className={styles.left_header_h1}>
         <Link href="/pages/index">
           <span className={styles.main_logo}>ezSlips</span>
         </Link>
-      </h1>
+      </div>
     </div>
   );
 }
 
 function MiddleHeader({ links }) {
-
-  // function handleClick(props) {
-  //   console.log(props);
-  // }
-
+  
   return (
     <div className={styles.middle_header}>
       {links.map((val) => (
-        <li key={val.text} id={val.text}>
+        <div key={val.text} id={val.text} className={styles.middleheaderlink} >
           <Link href={val.href}>
             <>
               <h3>{val.text}</h3>
@@ -62,9 +69,11 @@ function MiddleHeader({ links }) {
 
             </>
           </Link>
-        </li>
+        </div>
       ))}
     </div>
+    
+    
   );
 }
 
@@ -83,14 +92,32 @@ function RightHeader() {
   );
 }
 
+function Modal() {
+ return(
+<>
+   <div className="flex">
+      <div className={styles.1stmodalchild modalchilds}>
+        <h1>Product</h1>
+        <p>A single platform to accept payments, protect revenue, and control your finances</p>
+      </div>
+      <div className={styles.2ndmodalchild modalchilds}></div">
+      <div className={styles.3rdmodalchild modalchilds}></div">
+   </div>
+</>
+ ) 
+}
 const Header = () => {
   return (
+    <>
     <div className={styles.header}>
 
       <LeftHeader />
       <MiddleHeader links={links} />
       <RightHeader />
+      
     </div>
+    <Modal />
+    </>
   );
 };
 

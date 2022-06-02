@@ -7,7 +7,9 @@ import Security from "../components/Security";
 import WhyImageDiv from "../components/WhyImageDiv";
 import Setup from "../components/Setup";
 import Thanks from "../components/Thanks"
-// import { Html, Head, Main, NextScript } from 'next/document'
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
+
 
 
 
@@ -15,16 +17,7 @@ export default function document() {
   
   return (
     <>
-      {/* <Html> */}
-        
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-       
-      </Head>
 
-
-        
         <Header />
         <Banner />
         <Features />
@@ -32,12 +25,8 @@ export default function document() {
         <WhyImageDiv />
         <Setup/>
         <Thanks />
-        {/* <Footer /> */}
-
-        
-  
-  
-      {/* </Html> */}
+        <Footer />
+        <Copyright/>   
     </>
   );
 }

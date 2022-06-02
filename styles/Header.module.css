@@ -41,7 +41,7 @@
     align-items: center;
   }
   
-  .middle_header li {
+  .middleheaderlink {
     font-family: Inter;
     line-height: 24px;
     letter-spacing: 0px;
@@ -62,12 +62,12 @@
     display: none;
   }
   
-  .middle_header li:hover {
+  .middleheaderlink:hover {
     border-top: 3px solid #47a296;
     cursor: pointer;
   }
   
-  .middle_header li:hover .down_arrow {
+  .middleheaderlink:hover .down_arrow {
     display: block;
   }   
   
@@ -78,7 +78,7 @@
   }
   
   .right_header li {
-    padding-left: 99px;
+    padding-left: 140px;
     color: #47a296;
   }
   

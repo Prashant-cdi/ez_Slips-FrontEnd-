@@ -8,7 +8,7 @@
     padding: 35px 0;
   }
   
-  
+
   .setup_child {
     width: 33%;
     padding: 50px 0;
@@ -36,6 +36,11 @@
     padding: 0 18%;
   }
   
+  
+  #setup2 {
+      padding: 0 0 0 15px;  
+  }
+
   .circle {
     background-color: #AFD7D2;
     border-radius: 100%;
