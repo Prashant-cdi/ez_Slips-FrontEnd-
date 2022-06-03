@@ -12,6 +12,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <div id="main_model"></div>
       </body>
     </Html>
   )

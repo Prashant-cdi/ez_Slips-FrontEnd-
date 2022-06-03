@@ -52,5 +52,27 @@ a {
 }
 /* this is for setup div */
 
+/* 
+#main_model {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  pointer-events: null;
+}
+.modalOverlay::after{
+  content: '';
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.558);
+  z-index: -1;
+} */
 
 
