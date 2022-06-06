@@ -2,13 +2,13 @@ import React from 'react'
 import styles from "../styles/Footer.module.css";
 import Link from 'next/link';
 
-function Leftfooter() {
+export function Leftfooter() {
   return(
     <span className={styles.footerLogo}>eZSlips</span>
   )
 }
 
-function Middlefooter() {
+export function Middlefooter() {
 return(
 <div className={styles.middlefooter}>
 <div className={styles.footerlink}>Product</div>
@@ -36,11 +36,11 @@ function Rightfooter2() {
   )
 }
 
-function Middlefooter2() {
+export function Middlefooter2() {
   return (
     <div className={styles.footerbuttondiv}>
      <li>
-        <Link href="/pages/signin">Sign In</Link>
+        <Link href="/pages/signin"><span className={styles.signinlink}>Sign In</span></Link>
       </li>
       <span className={styles.spanbutton}>
         <Link href="/pages/signup">

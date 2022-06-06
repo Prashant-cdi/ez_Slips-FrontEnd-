@@ -146,7 +146,7 @@ function LeftHeader() {
   return (
     <div className={styles.left_header}>
       <div className={styles.left_header_h1}>
-        <Link href="/pages/index">
+        <Link href="/">
           <span className={styles.main_logo}>ezSlips</span>
         </Link>
       </div>
@@ -254,7 +254,7 @@ const Header = () => {
 </div>
 
 
-<Modal />
+{/* <Modal /> */}
 </>
   );
 };

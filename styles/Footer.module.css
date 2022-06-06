@@ -13,18 +13,19 @@
     font-weight: 400;
     line-height: 50px;
     color: #47A296;
-    margin: 0px 0 0px 160px;
+    margin: 0px 0 0px 230px;
     display: inline-block;
+    
 }
 
 .middlefooter{
-    margin-left: 85px;
+    margin-left: 76px;
     display: flex;
 }
 
 .rightfooter {
     width: 220px;
-    right: 91px;
+    right: 77px;
     position: absolute;
   
 }
@@ -38,7 +39,7 @@
 
 .footerlink{
     width: 125px;
-    margin: 0 15px auto;
+    margin: 0 10px auto;
     text-align: center;
     padding: 30px 0;
 }
@@ -75,16 +76,20 @@
   .footerbuttondiv {
     display: flex;
     align-items: center;
-    margin-left: 28%;
+    margin-left: 31%;
     list-style-type: none;
   }
 
   .rightfooter2
   {
     width: 220px;
-    right: 91px;
+    right: 77px;
     position: absolute;
     font-weight: 300;
     font-size: 14px;
     line-height: 24px;  
+  }
+
+  .signinlink{
+    color:#47a296;
   }

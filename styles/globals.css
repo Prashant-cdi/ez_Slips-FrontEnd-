@@ -50,6 +50,10 @@ a {
 .margin_auto {
   margin: auto;
 }
+
+.align_item_center{
+  align-items: center;
+}
 /* this is for setup div */
 
 /* 
