@@ -54,6 +54,11 @@
     background-color: #C5D8E6;
     border: none;
   }
+
+  .left_banner_btn:hover {
+    background-color: #FFFFFF;
+  }
+  
   .content {
     width: 457px;
   }

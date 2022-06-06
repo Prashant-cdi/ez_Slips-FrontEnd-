@@ -36,7 +36,7 @@
   .feature_circle {
     height: 100px;
 width: 100px;
-background: rgba(0, 255, 87, 0.1);
+/* background: rgba(0, 255, 87, 0.1); */
 display: inline-block;
 border-radius: 100%;
   }

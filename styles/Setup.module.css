@@ -42,7 +42,7 @@
   }
 
   .circle {
-    background-color: #AFD7D2;
+    /* background-color: #AFD7D2; */
     border-radius: 100%;
     display: flex;
     width: 160px;

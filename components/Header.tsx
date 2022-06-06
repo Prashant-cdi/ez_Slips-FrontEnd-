@@ -164,6 +164,7 @@ function MiddleHeader({ links })  {
     <div className={styles.middle_header}>
       {links.map((val) => (
         <div key={val.text} id={val.text} className={styles.middleheaderlink} 
+        onClick={()=>{console.log("clicked")}}
         >
       
           <Link href={val.href}>
@@ -205,9 +206,7 @@ function RightHeader() {
 }
 
 function Modal() {
-
  return(
-
    <div className={`flex ${styles.modal}`} id="modal">
       <div className={`${styles.firstmodalchild} ${styles.modalchilds}`}>
         <div className={styles.name}>{modalcontent[0]["1stdiv_heading"]}</div>
@@ -233,18 +232,13 @@ function Modal() {
         <h3>{modalcontent[0]["3rddiv_second_smallheading"]}</h3>
         <p className={styles.samepara}>{modalcontent[0]["3rddiv_lower_para"]}</p>
       </div>
-
-     
    </div>
  ) 
 }
 
 const Header = () => {
-
-
   return (
     <>
-
 <div className={styles.header}>
 
   <LeftHeader />
@@ -252,9 +246,7 @@ const Header = () => {
   <RightHeader />
   
 </div>
-
-
-{/* <Modal /> */}
+<Modal />
 </>
   );
 };

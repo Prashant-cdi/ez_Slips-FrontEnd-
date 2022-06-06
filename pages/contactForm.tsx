@@ -4,7 +4,8 @@ import React from 'react'
 import ContactForm from "../components/ContactForm";
 
 const contactForm:any = () => {
-  return (
+
+return (
 <>
 <Header/>
 <ContactForm />

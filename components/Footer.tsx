@@ -62,6 +62,7 @@ const Footer = () => {
     <div className={styles.footer2nd}>
       <Middlefooter2 />
       <Rightfooter2 />
+      
     </div>
     </div>
 
