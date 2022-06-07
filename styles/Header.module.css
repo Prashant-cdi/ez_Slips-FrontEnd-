@@ -102,13 +102,24 @@
     position: absolute;
     background-color: white;
     top: 101px;
-    padding: 80px 93px 40px;
-    display:flex;
+    padding: 50px 93px 30px;
+    /* display:flex; */
     justify-content: space-between;
-
     animation-name: slideIn;
-    animation-duration: .5s;
+    animation-duration: .3s;
     z-index: 10;
+    position: fixed;
+    overflow: hidden;
+  }
+
+  .modal:after 
+  html{
+    overflow: hidden;
+  }
+
+ 
+  .Header_modal p{
+    color: #505050;
   }
 
 
@@ -131,6 +142,8 @@
     line-height: 24px;
   }
 
+
+
   .firstmodalchild p{
     font-family: 'Inter';
 font-style: normal;
@@ -138,6 +151,7 @@ font-weight: 300;
 font-size: 14px;
 line-height: 24px;
 margin: 50px 0 0 10px;
+color: #505050;
   }
 
 
@@ -148,6 +162,7 @@ margin: 50px 0 0 10px;
     font-size: 14px;
     line-height: 24px;
     margin: 14px 0 0 0;
+    color: #505050;
   }
   .modalchilds {
     width: 24%;
@@ -178,4 +193,6 @@ padding: 20px 0 10px;
   .firstmodalchild {
     padding: 20px 0;
   }
+
+
 

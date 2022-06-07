@@ -4,6 +4,7 @@ import styles from "../styles/Header.module.css";
 import Image from "next/image";
 import { useState, useEffect } from 'react'
 
+const displayModalFlag: boolean = false;
 
  
 interface Modalcontent {
@@ -119,7 +120,7 @@ interface Links {
   href: string;
 }
 
-const links: Links[] = [
+const links: Links[] =[
   {
     text: "Product",
     href: "/pages/products",
@@ -157,14 +158,22 @@ function LeftHeader() {
 
 
 
-function MiddleHeader({ links })  {
+function MiddleHeader({ links , displayModal, setdisplayModal, SetContent })  {
+
+  function changeDisplay() {
+    setdisplayModal(!displayModal);
+  }
    
   return(
 
     <div className={styles.middle_header}>
       {links.map((val) => (
         <div key={val.text} id={val.text} className={styles.middleheaderlink} 
-        onClick={()=>{console.log("clicked")}}
+        onClick={()=>{
+          console.log("clicked")
+          changeDisplay();
+          SetContent(val.text);
+        }}
         >
       
           <Link href={val.href}>
@@ -205,11 +214,22 @@ function RightHeader() {
   );
 }
 
-function Modal() {
+function Modal({displayModal, content}) {
+
+  useEffect(()=>{
+      
+  })
+
+
+  if(!displayModal )
+  return ;
+
+
+  else
  return(
-   <div className={`flex ${styles.modal}`} id="modal">
+   <div className={`flex ${styles.modal}`} id="modal" >
       <div className={`${styles.firstmodalchild} ${styles.modalchilds}`}>
-        <div className={styles.name}>{modalcontent[0]["1stdiv_heading"]}</div>
+        <div className={styles.name}>{content}</div>
         <p >{modalcontent[0]["1stdiv_para"]}</p>
       </div>
       
@@ -236,17 +256,54 @@ function Modal() {
  ) 
 }
 
+
+function ModalWrapper ({displayModal , content}) {
+
+  if(!displayModal)
+  return ;
+  else
+  return(
+    <div className= {styles.modalwrapper} >
+      <Modal displayModal={displayModal} content={content}/>
+  </div>
+    )
+}
 const Header = () => {
+const [displayModal , setDisplayModal] = useState(false);
+const [content, setContent ] = useState ("");
+
+
+useEffect(()=>{
+  document.addEventListener(
+    "click",
+    function(event) {
+      console.log(event);
+    }
+   
+  )
+}) 
+
+  function handlesetDisplaymodal(value:boolean):void {
+    setDisplayModal (value)
+    console.log("this has run");
+    console.log(displayModal);
+  }
+
+  function SetContent (value:string) : void {
+    setContent(value)
+  }
+
   return (
     <>
 <div className={styles.header}>
 
   <LeftHeader />
-  <MiddleHeader links={links}  />
+  <MiddleHeader displayModal={displayModal} setdisplayModal={handlesetDisplaymodal} links={links} SetContent= {SetContent}  />
   <RightHeader />
   
 </div>
-<Modal />
+
+<ModalWrapper displayModal = {displayModal} content={content}/>
 </>
   );
 };
