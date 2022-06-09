@@ -143,7 +143,7 @@ const links: Links[] =[
   },
 ];
 
-function LeftHeader() {
+const LeftHeader:React.FC = () => {
   return (
     <div className={styles.left_header}>
       <div className={styles.left_header_h1}>
@@ -155,12 +155,18 @@ function LeftHeader() {
   );
 }
 
+interface MiddleHeaderProps {
+  links : string,
+  displayModal: boolean,
+  setdisplayModal: void,
+  SetContent: void
+}
 
 
 
-function MiddleHeader({ links , displayModal, setdisplayModal, SetContent })  {
+const MiddleHeader:React.FC<MiddleHeaderProps> = ({ links , displayModal, setdisplayModal, SetContent }) => {
 
-  function changeDisplay() {
+  function changeDisplay():boolean {
     setdisplayModal(!displayModal);
   }
    
@@ -199,6 +205,7 @@ function MiddleHeader({ links , displayModal, setdisplayModal, SetContent })  {
   );
 }
 
+
 function RightHeader() {
   return (
     <div className={styles.right_header}>
@@ -213,6 +220,7 @@ function RightHeader() {
     </div>
   );
 }
+
 
 function Modal({displayModal, content}) {
 
@@ -268,23 +276,28 @@ function ModalWrapper ({displayModal , content}) {
   </div>
     )
 }
-const Header = () => {
-const [displayModal , setDisplayModal] = useState(false);
-const [content, setContent ] = useState ("");
+
+
+
+
+
+const Header: React.FC = () => {
+const [displayModal , setDisplayModal] = useState<boolean>(false);
+const [content, setContent ] = useState<string>("");
 
 
 useEffect(()=>{
   document.addEventListener(
     "click",
-    function(event) {
+    function(event):void {
       console.log(event);
     }
    
   )
 }) 
 
-  function handlesetDisplaymodal(value:boolean):void {
-    setDisplayModal (value)
+  function handlesetDisplaymodal(value:boolean) : void {
+    setDisplayModal(value)
     console.log("this has run");
     console.log(displayModal);
   }
