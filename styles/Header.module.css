@@ -95,7 +95,6 @@
     font-weight: bold;
   }
   
-
   /* model css  */
 
   .modal {
@@ -103,46 +102,52 @@
     background-color: white;
     top: 100px;
     padding: 50px 93px 30px;
-    /* display:flex; */
     justify-content: space-between;
-    animation-name: slideIn;
-    animation-duration: .3s;
+    /* animation-name: slideIn;
+    animation-duration: .3s; */
     z-index: 10;
     position: fixed;
     overflow: hidden;
   }
 
-  .modal:after 
-  html{
-    overflow: hidden;
+  .modalslideIn{
+    animation-name: slideIn;
+    animation-duration: .3s;
   }
 
- 
+  .modalslideOut{
+    animation-name: slideOut;
+    animation-duration: .3s;
+  }
+
+  @-webkit-keyframes slideIn {
+    from {top: 0px; opacity: 0} 
+    to {top: 100px; opacity: 1}
+  }
+  
+  @keyframes slideIn {
+    from {top: 0px; opacity: 0;} 
+    to {top: 100px; opacity: 1}
+  }
+
+  @-webkit-keyframes slideOut {
+    from {top: 100px; opacity: 1} 
+    to {top: 0px; opacity: 0}
+  }
+  
+  @keyframes slideOut {
+    from {top: 100px; opacity: 1} 
+    to {top: 0px; opacity: 0} 
+  }
+
   .Header_modal p{
     color: #505050;
   }
 
 
-  @-webkit-keyframes slideIn {
-    from {top: 0px; } 
-    to {top: 100px; }
-  }
-  
-  @keyframes slideIn {
-    from {top: 0px; } 
-    to {top: 100px;}
-  }
+ 
 
-  /* @-webkit-keyframes slideOut {
-    from {top: 100px; } 
-    to {top: 0px;}
-  }
   
-  @keyframes slideOut {
-    from {top: 100px;} 
-    to {top: 0px;} 
-  }
-   */
   
   .firstmodalchild .name{
     color: #47A296;
@@ -153,16 +158,14 @@
     line-height: 24px;
   }
 
-
-
   .firstmodalchild p{
     font-family: 'Inter';
-font-style: normal;
-font-weight: 300;
-font-size: 14px;
-line-height: 24px;
-margin: 50px 0 0 10px;
-color: #505050;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 50px 0 0 10px;
+    color: #505050;
   }
 
 

@@ -133,18 +133,18 @@ const RightHeader:FC = () => {
 
 
 interface ModalWrapperI {
-
   displayModal: boolean,
   contentIndex: number,
-  setdisplayModal?:any
-
+  setdisplayModal?: any | void
 }
 
-const ModalWrapper : FC<ModalWrapperI> = ({displayModal , contentIndex, setdisplayModal}) => {
+const ModalWrapper:FC<ModalWrapperI> = ({displayModal , contentIndex, setdisplayModal}) => {
 
+  var customStyleWrapper = {
+    "display": "unset"    
+  }
   
   const handleModalWrapper:any =(event:any) => {
-    {
       console.log(event.target.id);
       if(event.target.id=="modalWrap"){
         setdisplayModal(!displayModal);
@@ -152,29 +152,29 @@ const ModalWrapper : FC<ModalWrapperI> = ({displayModal , contentIndex, setdispl
     }
   }
 
-  if(!displayModal){
-    return "sadasd";
+  if(!displayModal)
+  {
+
+    customStyleWrapper ={
+      "display":"none"
+    }
   }
-  else
+
   return(
-    <div className= {styles.modalwrapper} onClick={handleModalWrapper} id="modalWrap" >
+    <div className= {styles.modalwrapper} onClick={handleModalWrapper} id="modalWrap" style={customStyleWrapper}>
       <Modal displayModal={displayModal} contentIndex={contentIndex} />
   </div>
     )
   }
-
-
-
+  
 
 const Modal:FC<ModalWrapperI>=({displayModal, contentIndex}) =>{
 
-if(!displayModal )
-  return ;
+  console.log(displayModal)
 
-else
  return(
 
-   <div className={`flex ${styles.modal}`} id="modal" >
+      <div className={`flex ${styles.modal} `} id="modal"  >
       <div className={`${styles.firstmodalchild} ${styles.modalchilds}`}>
         <div className={styles.name}>{modalData.modalcontent[contentIndex]["1stdiv_heading"]}</div>
         <p >{modalData.modalcontent[contentIndex]["1stdiv_para"]}</p>
@@ -200,9 +200,10 @@ else
         <p className={styles.samepara}>{modalData.modalcontent[contentIndex]["3rddiv_lower_para"]}</p>
       </div>
    </div>
+   
  ) 
 }
 
-}
+
 
 export default Header;

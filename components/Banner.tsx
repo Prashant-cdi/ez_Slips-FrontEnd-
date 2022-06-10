@@ -1,6 +1,8 @@
+
 import React from "react";
 import Image from "next/image";
 import styles from "../styles/Banner.module.css"
+import Link from "next/link"
 
 const Left_banner:React.FC = () => {
 
@@ -13,7 +15,7 @@ const Left_banner:React.FC = () => {
           client relations staff will contact you directly.
         </p>
         <br />
-        <button className={styles.left_banner_btn}>Register</button>
+         <Link href="/register"><button className={styles.left_banner_btn}>Register</button></Link>
       </div>
     </div>
   );
