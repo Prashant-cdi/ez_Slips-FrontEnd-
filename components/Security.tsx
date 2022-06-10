@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from "../styles/Security.module.css";
 
-function SecurityLeft() {
+const SecurityLeft:React.FC = () => {
     return(
         <div className={styles.security_left}>
             <div className={styles.security_left_content}>
@@ -14,7 +14,7 @@ function SecurityLeft() {
     )
 }
 
-function SecurityRight() {
+const SecurityRight:React.FC = () => {
     return(
         <div className={styles.security_right}>
             
@@ -24,13 +24,11 @@ function SecurityRight() {
             layout='fill'
             alt='biometric'
            />
-
-            
         </div>
     )
 }
 
-const Security = () => {
+const Security:React.FC = () => {
   return (
     <div className={styles.security}>
         <SecurityLeft />

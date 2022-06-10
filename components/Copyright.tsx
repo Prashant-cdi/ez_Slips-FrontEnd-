@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/Copyright.module.css'
 
-const Copyright = () => {
+const Copyright:React.FC = () => {
   return (
     <div className={styles.copyright}>
         <span className={styles.copyrightlogo}>ezSlips</span>

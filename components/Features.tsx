@@ -2,28 +2,37 @@ import React from "react";
 import Image from "next/image"
 import styles from "../styles/Features.module.css"
 
+interface FeatureBoxProps{
+[index:string] :string
+}
 
-
-function FeatureBox(props) {
+const FeatureBox:React.FC<FeatureBoxProps> = ({
+  src ,
+  heading,
+  para,
+  bgcolor
+}) => {
   return(
     <div className={styles.featuresbox}> 
-        <span className={styles.feature_circle} id={props.src} style={{backgroundColor:props.bgcolor  }}></span>
+        <span className={styles.feature_circle} id={src} style={{backgroundColor:bgcolor  }}></span>
         <Image 
-        src={props.src}
+        src={src}
         width="100"
         height="100"
-        alt={props.src}
+        alt={src}
         />        
-        <h1 className={styles.featuresbox_h1}>{props.heading}</h1>
-        <p>{props.para}</p>
+        <h1 className={styles.featuresbox_h1}>{heading}</h1>
+        <p>{para}</p>
         <span className=""></span>
     </div>
   )
 }
-const Features = () => {
+
+
+
+const Features:React.FC = () => {
   const paras = ["Hassle free work and automated salary slips for smooth workflow","Custom account and slips creation according to you and your employees","Simple and easy interfacefor steady, fast and friendly workflow"]
-  
-  
+
   return (
     <div className={styles.features}>
       <h1 className={styles.features_h1}>Features</h1>

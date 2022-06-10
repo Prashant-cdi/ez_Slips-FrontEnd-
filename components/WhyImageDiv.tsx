@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from  '../styles/WhyImageDiv.module.css'
 
-function WhyImageDiv() {
+const WhyImageDiv:React.FC = () => {
     return( 
         <div className={styles.whyworkharddiv}>
         <div className={styles.image_div}>

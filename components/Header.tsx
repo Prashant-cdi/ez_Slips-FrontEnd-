@@ -1,149 +1,57 @@
-import React from "react";
+import React,{FC} from "react";
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
 import Image from "next/image";
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-const displayModalFlag: boolean = false;
+import * as linkData from "./mockdata/links"
+import * as modalData from "./mockdata/ModalData"
+// const displayModalFlag: boolean = false;
 
- 
-interface Modalcontent {
+// this is the main component of the file
 
-  "1stdiv_heading":string;
-  "1stdiv_para" :string;
-  "2nddiv_main_heading":string;
+const Header: FC = () => {
+  
+  const [displayModal , setDisplayModal] = useState<boolean>(false);
+  
+  const [contentIndex, setContentIndex ] = useState<number>(0);
 
-  "2nddiv_first_smallheading":string;
-  "2nddiv_upper_para":string;
-  "2nddiv_second_smallheading": string;
-  "2nddiv_lower_para": string;
-
-  "3rddiv_main_heading" : string;
-  "3rddiv_first_smallheading":  string;
-  "3rddiv_second_smallheading":  string;
-  "3rddiv_lower_para":  string;
-  "3rddiv_upper_para": string;
-}
-
-const modalcontent: Modalcontent[] = [
- 
-  { 
-    "1stdiv_heading": "Product",
-    "1stdiv_para" :"A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_main_heading" : "For Business",
-
-    "2nddiv_first_smallheading": "Teams",
-    "2nddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_second_smallheading": "Enhancements",
-    "2nddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-
-    "3rddiv_main_heading" : "For Individual",
-    "3rddiv_first_smallheading": "Online",
-    "3rddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "3rddiv_second_smallheading": "Authentication",
-    "3rddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-  },
-
-  { 
-    "1stdiv_heading": "About",
-    "1stdiv_para" :"A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_main_heading" : "For Business",
-
-    "2nddiv_first_smallheading": "Teams",
-    "2nddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_second_smallheading": "Enhancements",
-    "2nddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-
-    "3rddiv_main_heading" : "For Individual",
-    "3rddiv_first_smallheading": "Online",
-    "3rddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "3rddiv_second_smallheading": "Authentication",
-    "3rddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-  },
-
-  { 
-    "1stdiv_heading": "Contact",
-    "1stdiv_para" :"A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_main_heading" : "For Business",
-
-    "2nddiv_first_smallheading": "Teams",
-    "2nddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_second_smallheading": "Enhancements",
-    "2nddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-
-    "3rddiv_main_heading" : "For Individual",
-    "3rddiv_first_smallheading": "Online",
-    "3rddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "3rddiv_second_smallheading": "Authentication",
-    "3rddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-  },
-
-  { 
-    "1stdiv_heading": "Policy",
-    "1stdiv_para" :"A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_main_heading" : "For Business",
-
-    "2nddiv_first_smallheading": "Teams",
-    "2nddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_second_smallheading": "Enhancements",
-    "2nddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-
-    "3rddiv_main_heading" : "For Individual",
-    "3rddiv_first_smallheading": "Online",
-    "3rddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "3rddiv_second_smallheading": "Authentication",
-    "3rddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-  },
-
-  { 
-    "1stdiv_heading": "Pricing",
-    "1stdiv_para" :"A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_main_heading" : "For Business",
-
-    "2nddiv_first_smallheading": "Teams",
-    "2nddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "2nddiv_second_smallheading": "Enhancements",
-    "2nddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-
-    "3rddiv_main_heading" : "For Individual",
-    "3rddiv_first_smallheading": "Online",
-    "3rddiv_upper_para": "A single platform to accept payments, protect revenue, and control your finances.",
-    "3rddiv_second_smallheading": "Authentication",
-    "3rddiv_lower_para": "A single platform to accept payments, protect revenue, and control your finances.",
-  }
-
-]
-
-
-interface Links {
-  text: string;
-  href: string;
-}
-
-const links: Links[] =[
-  {
-    text: "Product",
-    href: "/pages/products",
-  },
-  {
-    text: "About",
-    href: "/pages/products",
-  },
-  {
-    text: "Contact",
-    href: "/pages/contact",
-  },
-  {
-    text: "Policy",
-    href: "/pages/policy",
-  },
-  {
-    text: "Pricing",
-    href: "/pages/pricing",
-  },
-];
-
-const LeftHeader:React.FC = () => {
+    function handlesetDisplaymodal(value:boolean):any {
+      setDisplayModal(value)
+      console.log("this has run");
+      console.log(displayModal);
+    }
+  
+    function SetContentIndex (value:number) :any  {
+      setContentIndex(value)
+    }
+  
+    return (
+      <>
+  <div className={styles.header}>
+  
+    <LeftHeader />
+  
+    <MiddleHeader 
+    displayModal={displayModal} 
+    setdisplayModal={handlesetDisplaymodal} 
+    links={linkData.links} 
+    SetContentIndex= {SetContentIndex}  />
+  
+    <RightHeader />
+    
+  </div>
+  
+  <ModalWrapper 
+  displayModal = {displayModal} 
+  contentIndex={contentIndex} 
+  setdisplayModal={handlesetDisplaymodal}  
+  />
+  </>
+    );
+  };
+  
+const LeftHeader:FC = () => {
   return (
     <div className={styles.left_header}>
       <div className={styles.left_header_h1}>
@@ -156,31 +64,33 @@ const LeftHeader:React.FC = () => {
 }
 
 interface MiddleHeaderProps {
-  links : string,
-  displayModal: boolean,
-  setdisplayModal: void,
-  SetContent: void
+  links : linkData.Links[],
+  displayModal: boolean, 
+  SetContentIndex?: any,
+  setdisplayModal : any
 }
 
 
 
-const MiddleHeader:React.FC<MiddleHeaderProps> = ({ links , displayModal, setdisplayModal, SetContent }) => {
+const MiddleHeader:FC<MiddleHeaderProps> = ({ links , displayModal, setdisplayModal, SetContentIndex }) => {
 
-  function changeDisplay():boolean {
+  function changeDisplay() {
     setdisplayModal(!displayModal);
   }
    
   return(
 
     <div className={styles.middle_header}>
-      {links.map((val) => (
+      {links.map((val, index) => (
         <div key={val.text} id={val.text} className={styles.middleheaderlink} 
-        onClick={()=>{
+        onClick={ 
+          ()=>{
           console.log("clicked")
           changeDisplay();
-          SetContent(val.text);
-        }}
-        >
+          SetContentIndex(index);
+          console.log(index);
+        }
+        }>
       
           <Link href={val.href}>
             <>
@@ -206,7 +116,7 @@ const MiddleHeader:React.FC<MiddleHeaderProps> = ({ links , displayModal, setdis
 }
 
 
-function RightHeader() {
+const RightHeader:FC = () => {
   return (
     <div className={styles.right_header}>
       <li>
@@ -222,103 +132,77 @@ function RightHeader() {
 }
 
 
-function Modal({displayModal, content}) {
+interface ModalWrapperI {
 
-  useEffect(()=>{
-      
-  })
+  displayModal: boolean,
+  contentIndex: number,
+  setdisplayModal?:any
+
+}
+
+const ModalWrapper : FC<ModalWrapperI> = ({displayModal , contentIndex, setdisplayModal}) => {
+
+  
+  const handleModalWrapper:any =(event:any) => {
+    {
+      console.log(event.target.id);
+      if(event.target.id=="modalWrap"){
+        setdisplayModal(!displayModal);
+    
+    }
+  }
+
+  if(!displayModal){
+    return "sadasd";
+  }
+  else
+  return(
+    <div className= {styles.modalwrapper} onClick={handleModalWrapper} id="modalWrap" >
+      <Modal displayModal={displayModal} contentIndex={contentIndex} />
+  </div>
+    )
+  }
 
 
-  if(!displayModal )
+
+
+const Modal:FC<ModalWrapperI>=({displayModal, contentIndex}) =>{
+
+if(!displayModal )
   return ;
 
-
-  else
+else
  return(
+
    <div className={`flex ${styles.modal}`} id="modal" >
       <div className={`${styles.firstmodalchild} ${styles.modalchilds}`}>
-        <div className={styles.name}>{content}</div>
-        <p >{modalcontent[0]["1stdiv_para"]}</p>
+        <div className={styles.name}>{modalData.modalcontent[contentIndex]["1stdiv_heading"]}</div>
+        <p >{modalData.modalcontent[contentIndex]["1stdiv_para"]}</p>
       </div>
       
       <div className={`${styles.secondmodalchild} ${styles.modalchilds}`}>
       
-        <h2>{modalcontent[0]["2nddiv_main_heading"]}</h2>
-        <h3>{modalcontent[0]["2nddiv_first_smallheading"]}</h3>
-        <p className={styles.samepara}>{modalcontent[0]["2nddiv_upper_para"]}</p>
+        <h2>{modalData.modalcontent[contentIndex]["2nddiv_main_heading"]}</h2>
+        <h3>{modalData.modalcontent[contentIndex]["2nddiv_first_smallheading"]}</h3>
+        <p className={styles.samepara}>{modalData.modalcontent[contentIndex]["2nddiv_upper_para"]}</p>
         <hr className={styles.hruler} />
-        <h3>{modalcontent[0]["2nddiv_second_smallheading"]}</h3>
-        <p className={styles.samepara}>{modalcontent[0]["2nddiv_lower_para"]}</p>
+        <h3>{modalData.modalcontent[contentIndex]["2nddiv_second_smallheading"]}</h3>
+        <p className={styles.samepara}>{modalData.modalcontent[contentIndex]["2nddiv_lower_para"]}</p>
 
       </div>
 
       <div className={`${styles.thirdrdmodalchild} ${styles.modalchilds}`}>
-      <h2>{modalcontent[0]["3rddiv_main_heading"]}</h2>
-        <h3>{modalcontent[0]["3rddiv_first_smallheading"]}</h3>
-        <p className={styles.samepara}>{modalcontent[0]["3rddiv_upper_para"]}</p>
+      <h2>{modalData.modalcontent[contentIndex]["3rddiv_main_heading"]}</h2>
+        <h3>{modalData.modalcontent[contentIndex]["3rddiv_first_smallheading"]}</h3>
+        <p className={styles.samepara}>{modalData.modalcontent[contentIndex]["3rddiv_upper_para"]}</p>
         <hr className={styles.hruler}/>
-        <h3>{modalcontent[0]["3rddiv_second_smallheading"]}</h3>
-        <p className={styles.samepara}>{modalcontent[0]["3rddiv_lower_para"]}</p>
+        <h3>{modalData.modalcontent[contentIndex]["3rddiv_second_smallheading"]}</h3>
+        <p className={styles.samepara}>{modalData.modalcontent[contentIndex]["3rddiv_lower_para"]}</p>
       </div>
    </div>
  ) 
 }
 
-
-function ModalWrapper ({displayModal , content}) {
-
-  if(!displayModal)
-  return ;
-  else
-  return(
-    <div className= {styles.modalwrapper} >
-      <Modal displayModal={displayModal} content={content}/>
-  </div>
-    )
 }
-
-
-
-
-
-const Header: React.FC = () => {
-const [displayModal , setDisplayModal] = useState<boolean>(false);
-const [content, setContent ] = useState<string>("");
-
-
-useEffect(()=>{
-  document.addEventListener(
-    "click",
-    function(event):void {
-      console.log(event);
-    }
-   
-  )
-}) 
-
-  function handlesetDisplaymodal(value:boolean) : void {
-    setDisplayModal(value)
-    console.log("this has run");
-    console.log(displayModal);
-  }
-
-  function SetContent (value:string) : void {
-    setContent(value)
-  }
-
-  return (
-    <>
-<div className={styles.header}>
-
-  <LeftHeader />
-  <MiddleHeader displayModal={displayModal} setdisplayModal={handlesetDisplaymodal} links={links} SetContent= {SetContent}  />
-  <RightHeader />
-  
-</div>
-
-<ModalWrapper displayModal = {displayModal} content={content}/>
-</>
-  );
-};
 
 export default Header;

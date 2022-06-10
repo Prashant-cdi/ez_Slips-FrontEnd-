@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import styles from "../styles/Banner.module.css"
 
-function Left_banner() {
+const Left_banner:React.FC = () => {
+
   return (
     <div className={styles.left_banner}>
       <div className={styles.content}>
@@ -18,7 +19,7 @@ function Left_banner() {
   );
 }
 
-function Right_banner() {
+const Right_banner:React.FC = () => {
   return (
     <div className={styles.right_banner}>
       <Image
@@ -29,9 +30,11 @@ function Right_banner() {
         height="684"
       />
     </div>
-  );
+  )
 }
-const Banner = () => {
+
+
+const Banner:React.FC = () => {
   return (
     <div className={styles.banner_div}>
       <Left_banner />

@@ -101,7 +101,7 @@
   .modal {
     position: absolute;
     background-color: white;
-    top: 101px;
+    top: 100px;
     padding: 50px 93px 30px;
     /* display:flex; */
     justify-content: space-between;
@@ -124,14 +124,25 @@
 
 
   @-webkit-keyframes slideIn {
-    from {top: 0px; opacity: 0} 
-    to {top: 100px; opacity: 1}
+    from {top: 0px; } 
+    to {top: 100px; }
   }
   
   @keyframes slideIn {
-    from {top: 0px; opacity: 0} 
-    to {top: 100px; opacity: 1}
+    from {top: 0px; } 
+    to {top: 100px;}
   }
+
+  /* @-webkit-keyframes slideOut {
+    from {top: 100px; } 
+    to {top: 0px;}
+  }
+  
+  @keyframes slideOut {
+    from {top: 100px;} 
+    to {top: 0px;} 
+  }
+   */
   
   .firstmodalchild .name{
     color: #47A296;
@@ -167,6 +178,18 @@ color: #505050;
   .modalchilds {
     width: 24%;
   }
+
+  .modalwrapper {
+    height: 100vw;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+
+}
 
   .hruler {
     color: #47A296;

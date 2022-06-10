@@ -13,13 +13,18 @@ const customStyleh1 = {
   "margin":"40px auto"
 }
 
-function Partner(props) {
+interface PartnerI  {
+  value:string
+}
+
+
+const Partner:React.FC<PartnerI>=({value})=> {
   return (
-    <h2 >{props.value}</h2>
+    <h2 >{value}</h2>
   )
 }
 
-const Thanks = () => {
+const Thanks:React.FC = () => {
   return (
       <div className={`${styles.thanks} justify-center`}>
         <div className={styles.imagerounddiv}>
@@ -31,7 +36,7 @@ const Thanks = () => {
         <h3 className='inline_block margin_auto' style={customStyleh2}>Lassy Chester, Creative director</h3>
         <h1 className='inline_block margin_auto' style={customStyleh1}>Our Partners</h1>
         <div className={styles.partners_div}>
-          { partners.map((value)=>(
+          { partners.map((value,index)=>(
                   <Partner value={value} key={value}/>
           ))
           }

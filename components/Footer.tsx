@@ -2,13 +2,13 @@ import React from 'react'
 import styles from "../styles/Footer.module.css";
 import Link from 'next/link';
 
-export function Leftfooter() {
+export const Leftfooter:React.FC = () => {
   return(
     <span className={styles.footerLogo}>eZSlips</span>
   )
 }
 
-export function Middlefooter() {
+export const Middlefooter:React.FC = () => {
 return(
 <div className={styles.middlefooter}>
 <div className={styles.footerlink}>Product</div>
@@ -20,7 +20,7 @@ return(
 )
 }
 
-function Rightfooter() {
+const Rightfooter:React.FC = () => {
   return(
   <div className={styles.rightfooter}>
    <p>A single platform to accept payments, protect revenue, and control your finances.</p>
@@ -28,7 +28,7 @@ function Rightfooter() {
   )
 }
 
-function Rightfooter2() {
+const Rightfooter2:React.FC = () => {
   return(
   <div className={styles.rightfooter2}>
    <p>A single platform to accept payments, protect revenue, and control your finances.</p>
@@ -36,7 +36,7 @@ function Rightfooter2() {
   )
 }
 
-export function Middlefooter2() {
+export const Middlefooter2:React.FC = () => {
   return (
     <div className={styles.footerbuttondiv}>
      <li>
@@ -51,8 +51,9 @@ export function Middlefooter2() {
   )
 }
 
-const Footer = () => {
+const Footer:React.FC = () => {
   return (
+
     <div className={styles.mainfooter}>
     <div className={styles.footer}>
       <Leftfooter />
