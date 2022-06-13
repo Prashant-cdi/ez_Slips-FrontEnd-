@@ -1,0 +1,19 @@
+.signupform {
+    margin: 8% auto;
+    border: 1px solid #47a296;
+    padding: 2% 4%;
+    width: 32%;
+    text-align: center;
+    border-radius: 13px;
+}
+
+.lastpara {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 13.5px !important;
+}
+
+.lastpara1st {
+    line-height: 16px;
+    color: #2E2E2E;
+}

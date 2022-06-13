@@ -1,11 +1,14 @@
 import React,{FC} from "react";
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
-import Image from "next/image";
+import * as linkData from "./mockdata/links"
+import * as modalData from "./mockdata/ModalData" 
+
 import { useState } from 'react'
 
-import * as linkData from "./mockdata/links"
-import * as modalData from "./mockdata/ModalData"
+
+import { LeftHeader } from "./LeftHeader";
+import { MiddleHeader } from "./MiddleHeader";
 // const displayModalFlag: boolean = false;
 
 // this is the main component of the file
@@ -37,7 +40,7 @@ const Header: FC = () => {
     setdisplayModal={handlesetDisplaymodal} 
     links={linkData.links} 
     SetContentIndex= {SetContentIndex}  />
-  
+
     <RightHeader />
     
   </div>
@@ -51,79 +54,16 @@ const Header: FC = () => {
     );
   };
   
-const LeftHeader:FC = () => {
-  return (
-    <div className={styles.left_header}>
-      <div className={styles.left_header_h1}>
-        <Link href="/">
-          <span className={styles.main_logo}>ezSlips</span>
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-interface MiddleHeaderProps {
-  links : linkData.Links[],
-  displayModal: boolean, 
-  SetContentIndex?: any,
-  setdisplayModal : any
-}
-
-
-
-const MiddleHeader:FC<MiddleHeaderProps> = ({ links , displayModal, setdisplayModal, SetContentIndex }) => {
-
-  function changeDisplay() {
-    setdisplayModal(!displayModal);
-  }
-   
-  return(
-
-    <div className={styles.middle_header}>
-      {links.map((val, index) => (
-        <div key={val.text} id={val.text} className={styles.middleheaderlink} 
-        onClick={ 
-          ()=>{
-          console.log("clicked")
-          changeDisplay();
-          SetContentIndex(index);
-          console.log(index);
-        }
-        }>
-      
-          <Link href={val.href}>
-            <>
-              <h3>{val.text}</h3>
-
-              <span className={styles.down_arrow}>
-
-                <Image
-                  src="/assets/images/down-arrow.png"
-                  alt="down arrow"
-                  height="20"
-                  width="20"
-                  />
-              </span>
-
-            </>
-          </Link>
-        </div>
-      ))}
-
-      </div>
-  );
-}
 
 
 const RightHeader:FC = () => {
   return (
     <div className={styles.right_header}>
       <li>
-        <Link href="/pages/signin">Sign In</Link>
+        <Link href="/signin">Sign In</Link>
       </li>
       <span className={styles.spanbutton}>
-        <Link href="/pages/signup">
+        <Link href="/signup">
           <button>Sign Up</button>
         </Link>
       </span>

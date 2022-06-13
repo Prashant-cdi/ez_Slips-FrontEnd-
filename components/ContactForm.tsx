@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{FC} from 'react'
 import styles from "../styles/ContactForm.module.css";
 import { Leftfooter, Middlefooter, Middlefooter2 } from './Footer';
 
@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Copyright from './Copyright';
 
 const footershadow : any = {
-  "box-shadow": "1px 1px 6px grey",
+  "boxShadow": "1px 1px 6px grey",
   "padding": "50px 0 40px"
 }
 
@@ -48,7 +48,7 @@ function FooterRight() {
 
     )
 }
-const ContactForm = () => {
+const ContactForm:FC = () => {
   return (
       <>
     
@@ -78,17 +78,25 @@ const ContactForm = () => {
 
 </div>
 
-
-    <div className="flex align_item_center" style={footershadow}>
-
-      <Leftfooter />
-      <Middlefooter />
-        <FooterRight />
-    </div>
-    <Copyright />
+    <MainCommonFooter />
       </>
 
 )
 }
+
+const MainCommonFooter:FC = () => {
+  return (
+    <div>
+      <div className="flex align_item_center" style={footershadow}>
+
+    <Leftfooter />
+    <Middlefooter />
+      <FooterRight />
+  </div>
+  <Copyright /></div>
+  )
+}
+
+export {MainCommonFooter}
 
 export default ContactForm
