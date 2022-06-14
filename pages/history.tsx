@@ -1,6 +1,6 @@
 import React,{FC} from 'react'
 
-import {MiddleHeader } from '../components/Header'
+import {LeftHeader, MiddleHeader, ModalWrapper } from '../components/Header'
 
 import { useState } from 'react'
 
@@ -8,12 +8,16 @@ import * as linkData from "../components/mockdata/links"
 
 import styles from "../styles/Header.module.css";
 import Copyright from '../components/Copyright';
-import { Leftfooter, Middlefooter, Middlefooter2 } from '../components/Footer';
-import { LeftHeader } from '../components/LeftHeader';
+import { Leftfooter, Middlefooter } from '../components/Footer';
+import RightFooterdashboard from '../components/RightFooterdashboard';
+import LeftDashboardComponent from '../components/LeftDashboardComponent';
+import RightConfiguration from '../components/RightConfiguration';
+import RightHistoryComponent from '../components/RightHistoryComponent';
 
 
 
-const Dashboard:FC = () => {
+
+const History:FC = () => {
     const [displayModal , setDisplayModal] = useState<boolean>(false);
   
     const [contentIndex, setContentIndex ] = useState<number>(0);
@@ -47,17 +51,42 @@ const footershadow : any = {
         
     
     </div>
-    <div className="flex align_item_center" style={footershadow}>
+  
+   
+
+    <ModalWrapper   displayModal = {displayModal} 
+  contentIndex={contentIndex} 
+  setdisplayModal={handlesetDisplaymodal}  />
+
+
+{/* here is the main dashboard middle content */}
+<div className='flex'>
+
+<LeftDashboardComponent />
+
+<RightHistoryComponent />
+</div>
+
+
+
+
+
+
+<div className="flex align_item_center" style={footershadow}>
     <Leftfooter />
     <Middlefooter />
-    .
+
+  <RightFooterdashboard />
+    
     </div>
-    <Copyright />  
-    </>
+
+<Copyright /> 
+  </>
+    
     
 
 
   )
 }
 
-export default Dashboard
+export default History
