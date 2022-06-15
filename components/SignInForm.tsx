@@ -4,6 +4,8 @@ import styles from "../styles/SignInForm.module.css"
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useState } from 'react';
+
 
 
 export const Heading : FC<{text:string}> = ({text}) => {
@@ -14,12 +16,17 @@ return (
 
 export interface Inputprops {
   [index:string] :string,
+  handleChange?: any
 }
 
-export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type}) => {
-  return (
+export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange}) => {
+  
+  function handle(e:any){
+  handleChange(e.target.value)
+}  
+return (
     <div className={styles.inputdiv}  >
-        <input type={type} name="" id="" placeholder={placeholder} className={styles.inputs}/>
+        <input type={type} name="" id="" placeholder={placeholder} className={styles.inputs} onChange={ handle } required/>
         <span className={styles.inputimg} style={{height:"24px", width:"24px"}}><Image 
         src={imgsrc}
         alt={alt}
@@ -32,11 +39,19 @@ export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type}) => {
 
 
 
-export const Button:FC<{text:string}>= ({text}) => {
+export const Button:FC<{text:string, handleClick:any}>= ({text,handleClick}) => {
+
+  function handle(e:any) {
+    handleClick();
+  }
   return (
-    <div><div className={styles.buttondiv}>
-    <button type="submit" >{text}</button>
-  </div></div>
+
+    <div>
+      <div className={styles.buttondiv}>
+    <button type="submit" onClick={handle}>{text}</button>
+    </div>
+    </div>
+    
   )
 }
 
@@ -44,6 +59,12 @@ export const Button:FC<{text:string}>= ({text}) => {
 
 
 const SignInForm:FC = () => {
+  const [email, setEmail] = useState<String>("");
+  const [Password, setPassword] = useState<String>("");
+
+  function handleSignin(e:any) {
+    console.log(e.target.value);
+  }
   return (
 
     <div className={styles.signinform} >
@@ -57,7 +78,7 @@ const SignInForm:FC = () => {
             
             </div>
 
-            <Button text="Sign in"/>
+            <Button text="Sign in" handleClick={handleSignin}/>
             <div className={styles.forgotdiv}>
               <Link href="/forgotpassword"><a>Forgot password</a></Link>
             </div>

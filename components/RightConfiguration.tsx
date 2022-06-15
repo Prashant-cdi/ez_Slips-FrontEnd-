@@ -34,7 +34,7 @@ const SelectInput:FC<leftinputprops> = ({text, placeholder}) => {
 
 const InputfullWidth = () => {
     return (
-        <input type="text" name="" id="" className={styles.inputfullwidth}/>
+        <input type="text" name="" id="" className={styles.inputfullwidth} placeholder="Full address (with pincode)"/>
     )
 }
 

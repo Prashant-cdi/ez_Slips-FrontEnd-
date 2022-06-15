@@ -81,8 +81,6 @@ const tableDataObj : tableDataInterface[] = [
         "slipshared": "DD/MM/YYYY",
         "icon": "something"
     }
-
-
 ]
 
 interface tableDataprops {
