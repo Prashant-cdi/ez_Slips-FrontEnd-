@@ -3,7 +3,6 @@ import signin from '../pages/signin';
 import styles from "../styles/SignInForm.module.css"
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { useState } from 'react';
 
 
@@ -15,15 +14,18 @@ return (
 }
 
 export interface Inputprops {
-  [index:string] :string,
-  handleChange?: any
+  placeholder:string,
+  imgsrc:string,
+  alt: string,
+  type: string
+  handleChange: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange}) => {
-  
   function handle(e:any){
-  handleChange(e.target.value)
+    handleChange(e.target.value);
 }  
+
 return (
     <div className={styles.inputdiv}  >
         <input type={type} name="" id="" placeholder={placeholder} className={styles.inputs} onChange={ handle } required/>
@@ -39,16 +41,14 @@ return (
 
 
 
-export const Button:FC<{text:string, handleClick:any}>= ({text,handleClick}) => {
+export const Button:FC<{text:string}>= ({text}) => {
 
-  function handle(e:any) {
-    handleClick();
-  }
+ 
   return (
-
+ 
     <div>
       <div className={styles.buttondiv}>
-    <button type="submit" onClick={handle}>{text}</button>
+    <button type="submit">{text}</button>
     </div>
     </div>
     
@@ -59,29 +59,36 @@ export const Button:FC<{text:string, handleClick:any}>= ({text,handleClick}) => 
 
 
 const SignInForm:FC = () => {
-  const [email, setEmail] = useState<String>("");
-  const [Password, setPassword] = useState<String>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  function handleSignin(e:any) {
-    console.log(e.target.value);
-  }
+  function handleSubmit(e:any) {
+    e.preventDefault();
+    console.log(email)
+    console.log(password)
+  }  
+
   return (
 
     <div className={styles.signinform} >
+
+          <form onSubmit={handleSubmit}>
+
             <Heading text="Sign In"/>
             <p>Please enter your email and password</p>
-            <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="text"/>
-            <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password"/>
+            <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="email" handleChange={setEmail} /> 
+            <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password" handleChange={setPassword}/> 
             <div className={styles.remember}>
               
               <input type="checkbox" name="" id="" /><span>Remember me on this device</span>
             
             </div>
 
-            <Button text="Sign in" handleClick={handleSignin}/>
+            <Button text="Sign in"/>
             <div className={styles.forgotdiv}>
               <Link href="/forgotpassword"><a>Forgot password</a></Link>
             </div>
+          </form>
         
             
     </div>

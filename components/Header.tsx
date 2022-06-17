@@ -61,17 +61,12 @@ const Header: FC = () => {
       );
     }
 
-
-
-
 interface MiddleHeaderProps {
   links : linkData.Links[],
   displayModal: boolean, 
   SetContentIndex?: any,
   setdisplayModal : any
 }
-
-
 
 export const MiddleHeader:FC<MiddleHeaderProps> = ({ links , displayModal, setdisplayModal, SetContentIndex }) => {
 
@@ -123,8 +118,12 @@ const RightHeader:FC = () => {
         <Link href="/signin">Sign In</Link>
       </li>
       <span className={styles.spanbutton}>
-        <Link href="/signup">
-          <button>Sign Up</button>
+      <Link href="/signup">
+      <button className="btnsignup">
+        
+          Sign Up
+       
+        </button>
         </Link>
       </span>
     </div>

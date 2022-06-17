@@ -10,6 +10,7 @@
     z-index: 1;
   }
   
+
   .left_header {
     width: 35%;
     display: flex;
@@ -94,6 +95,10 @@
     color: white;
     font-size: 18px;
     font-weight: bold;
+  }
+
+  .spanbutton :hover{
+    cursor: pointer;
   }
   
   /* model css  */

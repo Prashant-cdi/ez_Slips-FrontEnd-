@@ -3,7 +3,7 @@ import { AppProps } from 'next/app'
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 export const client = new ApolloClient({
-    uri: "https://countries.trevorblades.com",
+    uri: "http://localhost:8000/ezslip",
     cache: new InMemoryCache(),
 });
 
