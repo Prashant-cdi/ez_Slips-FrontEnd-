@@ -38,7 +38,13 @@ const SetPasswordForm = () => {
 
       if(error) return <h1>error</h1>
 
-      if(data) {console.log(data)}
+      if(data) {
+        console.log(data)
+      document.cookie = `token = ${data.setPassword.token}`;
+      
+    }
+
+   
       
 
     }
@@ -57,7 +63,8 @@ const SetPasswordForm = () => {
         <p className={styles.smallpara}>(The password must be at least 8 characters including one uppercase, one lowercase, one number and a special character)</p>
         <Button text="Save" />
         {msg}
-        {data && <h4>{data.setPassword.message}</h4>}
+
+        {data && <h4>Password set successfully</h4>}
       </form>
     </div>
   )
