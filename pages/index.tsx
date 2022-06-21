@@ -19,7 +19,6 @@ export default function document() {
   
   return (
     <>
-
         <Header />
         <Banner />
         <Features />

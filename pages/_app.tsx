@@ -4,7 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export const client = new ApolloClient({
-    uri: "http://localhost:8000/ezslip",
+    uri: "http://localhost:5000/ezslip",
     cache: new InMemoryCache(),
 });
 

@@ -1,5 +1,6 @@
 .header {
     height: 100px;
+    margin: auto;
     width: 100%;
     display: flex;
     list-style-type: none;
@@ -12,12 +13,10 @@
   
 
   .left_header {
-    width: 35%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: left;
     font-family: Racing Sans One;
-    padding-right: 40px;
+    padding-right: 135px;
   }
   
   .left_header_h1 {
@@ -34,28 +33,44 @@
   
   .main_logo{
     font-family: 'Racing Sans One', cursive;
+    width: 131px;
+height: 50px;
   }
   
   .middle_header {
     display: flex;
-    width: 36%;
     justify-content: space-between;
     align-items: center;
   }
   
   .middleheaderlink {
-    font-family: Inter;
-    line-height: 24px;
-    letter-spacing: 0px;
-    text-align: center;
-    color: #333333;
-    height: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #525252;
+    margin: 0 22.5px;
+    min-height: 97px;
+    max-height: 97px;
     align-items: center;
     display: flex;
-    position: relative;
-    justify-content: center;
     border-top: 3px solid white;
-    font-size: 15px;
+    justify-content: center;
+    width: 65px;
+  }
+
+  .middleheaderlink h3 {
+    font-size: 16px;
+  }
+
+  
+  .middleheaderlink:hover .down_arrow {
+    display: block;
+  }  
+
+  .middleheaderlink:hover {
+    border-top: 3px solid #47a296;
+    cursor: pointer;
   }
   
   .down_arrow {
@@ -64,37 +79,40 @@
     bottom: 0px;
     display: none;
   }
-  
-  .middleheaderlink:hover {
-    border-top: 3px solid #47a296;
-    cursor: pointer;
-  }
-  
-  .middleheaderlink:hover .down_arrow {
-    display: block;
-  }   
-  
+
   .right_header {
-    width: 25%;
     display: flex;
-    align-items: center;
-  }
+    align-items: inherit;
+    justify-content: space-evenly;
+    margin-left: 99px;
+}
+
+.signinlink {
+  font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+}
   
   .right_header li {
-    padding-left: 140px;
     color: #47a296;
+    width: 74px;
+    text-align: right
   }
   
   .spanbutton button {
-    height: 48px;
-    margin-left: 45.5px;
-    width: 112px;
+
+    margin-left: 40px;
+    
     background: #47a296;
     border: none;
     border-radius: 5px;
     color: white;
     font-size: 18px;
     font-weight: bold;
+    width: 112px;
+height: 48px;
   }
 
   .spanbutton :hover{
@@ -103,47 +121,58 @@
   
   /* model css  */
 
-  .modal {
+  .modalopening{
+    display: flex;
     position: absolute;
     background-color: white;
-    top: 100px;
+    top: 102px;
     padding: 50px 93px 30px;
     justify-content: space-between;
-    /* animation-name: slideIn;
-    animation-duration: .3s; */
-    z-index: 10;
-    position: fixed;
-    overflow: hidden;
-  }
-
-  .modalslideIn{
     animation-name: slideIn;
     animation-duration: .3s;
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+    width: 1440px;
+    margin: auto;
+    
   }
 
-  .modalslideOut{
+  .modalclosing{
+    display: flex;
+    position: absolute;
+    background-color: white;
+    top: -402px;
+    padding: 50px 93px 30px;
+    justify-content: space-between;
     animation-name: slideOut;
-    animation-duration: .3s;
+    animation-duration: .5s;
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+    width: 1440px;
+    margin: auto;
   }
+
 
   @-webkit-keyframes slideIn {
-    from {top: 0px; opacity: 0} 
-    to {top: 100px; opacity: 1}
+    from {top: -402px; opacity: 0} 
+    to {top: 102px; opacity: 1}
   }
   
   @keyframes slideIn {
-    from {top: 0px; opacity: 0;} 
-    to {top: 100px; opacity: 1}
+    from {top: -402px; opacity: 0;} 
+    to {top: 102px; opacity: 1}
   }
 
   @-webkit-keyframes slideOut {
-    from {top: 100px; opacity: 1} 
-    to {top: 0px; opacity: 0}
+    from {top: 102px; opacity: 1} 
+    to {top: -402px; opacity: 1}
   }
   
   @keyframes slideOut {
-    from {top: 100px; opacity: 1} 
-    to {top: 0px; opacity: 0} 
+    from {top: 102px; opacity: 1} 
+    to {top: -402px; opacity: 1} 
   }
 
   .Header_modal p{
@@ -188,7 +217,8 @@
     width: 24%;
   }
 
-  .modalwrapper {
+
+  .modalwrapperOpening{
     height: 100vw;
     width: 100vw;
     overflow: hidden;
@@ -196,8 +226,30 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.4);  
+}
 
+.modalwrapperClosing{
+  height: 100vw;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation-name: fade;
+  animation-duration: 0.5s;
+  background-color: rgba(0,0,0,0.4);  
+}
+
+@-webkit-keyframes fade{
+  from { opacity: 1   } 
+  to { opacity: 1  } 
+}
+
+@keyframes fade {
+  from { opacity: 1} 
+  to { opacity: 1} 
 }
 
   .hruler {

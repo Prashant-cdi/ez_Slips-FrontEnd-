@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const Leftfooter:React.FC = () => {
   return(
-    <span className={styles.footerLogo}>eZSlips</span>
+    <span className={styles.footerLogo}>ezSlips</span>
   )
 }
 
@@ -56,9 +56,13 @@ const Footer:React.FC = () => {
 
     <div className={styles.mainfooter}>
     <div className={styles.footer}>
+      <div className="container">
+
       <Leftfooter />
       <Middlefooter />
       <Rightfooter/ >
+
+      </div>
     </div>
     <div className={styles.footer2nd}>
       <Middlefooter2 />

@@ -25,7 +25,8 @@ const Header: FC = () => {
     return (
       <>
   <div className={styles.header}>
-  
+    <div className="container">
+
     <LeftHeader />
   
     <MiddleHeader 
@@ -43,6 +44,7 @@ const Header: FC = () => {
   contentIndex={contentIndex} 
   setdisplayModal={handlesetDisplaymodal}  
   />
+  </div>
   </>
     );
   };
@@ -97,7 +99,7 @@ export const MiddleHeader:FC<MiddleHeaderProps> = ({ links , displayModal, setdi
                 <Image
                   src="/assets/images/down-arrow.png"
                   alt="down arrow"
-                  height="20"
+                  height="10"
                   width="20"
                   />
               </span>
@@ -114,18 +116,21 @@ export const MiddleHeader:FC<MiddleHeaderProps> = ({ links , displayModal, setdi
 const RightHeader:FC = () => {
   return (
     <div className={styles.right_header}>
-      <li>
-        <Link href="/signin">Sign In</Link>
-      </li>
-      <span className={styles.spanbutton}>
-      <Link href="/signup">
-      <button className="btnsignup">
-        
+      
+      <div className={styles.signinlink}>
+          <li>
+            <Link href="/signin">Sign In</Link>
+          </li>
+      </div>
+      
+      <div className={styles.spanbutton}>
+        <Link href="/signup">
+        <button className="btnsignup">
           Sign Up
-       
         </button>
         </Link>
-      </span>
+      </div>
+
     </div>
   );
 }
@@ -154,14 +159,14 @@ export const ModalWrapper:FC<ModalWrapperI> = ({displayModal , contentIndex, set
 
   if(!displayModal)
   {
-
     customStyleWrapper ={
-      "display":"none"
+      "display": "none"  
     }
   }
 
   return(
-    <div className= {styles.modalwrapper} onClick={handleModalWrapper} id="modalWrap" style={customStyleWrapper}>
+    // <div className= {styles.modalwrapper} onClick={handleModalWrapper} id="modalWrap" style={customStyleWrapper}>
+    <div className= {displayModal ? `${styles.modalwrapperOpening}`: `${styles.modalwrapperClosing}`} onClick={handleModalWrapper} id="modalWrap" style={customStyleWrapper}>
       <Modal displayModal={displayModal} contentIndex={contentIndex} />
   </div>
     )
@@ -170,11 +175,16 @@ export const ModalWrapper:FC<ModalWrapperI> = ({displayModal , contentIndex, set
 
 const Modal:FC<ModalWrapperI>=({displayModal, contentIndex}) =>{
 
-  console.log(displayModal)
+  console.log("display model is ----->"+displayModal)
+  // var class="";
+  // if(displayModal) {
+  //   class = 
+  // }
 
  return(
 
-      <div className={`flex ${styles.modal} `} id="modal"  >
+      // <div className={`flex ${styles.modal} `} id="modal"  >
+      <div className = {displayModal ? `${styles.modalopening}`: `${styles.modalclosing}`}>
       <div className={`${styles.firstmodalchild} ${styles.modalchilds}`}>
         <div className={styles.name}>{modalData.modalcontent[contentIndex]["1stdiv_heading"]}</div>
         <p >{modalData.modalcontent[contentIndex]["1stdiv_para"]}</p>

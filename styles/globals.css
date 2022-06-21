@@ -54,6 +54,36 @@ a {
 .align_item_center{
   align-items: center;
 }
+
+.container { 
+  width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 150px;
+  align-items: center;
+  position: relative;
+}
+
+
+.margin-auto { 
+  margin: auto;
+}
+
+.contactbutton {
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  background: #47A296;
+  color: #FFFFFF;
+  height: 48px;
+  width: 112px;
+  border-radius: 5px;
+
+}
 /* this is for setup div */
 
 /* 
@@ -80,3 +110,9 @@ a {
 } */
 
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

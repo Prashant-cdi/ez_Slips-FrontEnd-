@@ -1,6 +1,7 @@
 import React from 'react'
 import { MainCommonFooter } from '../components/ContactForm'
 import Header from '../components/Header'
+import SignupFooter from "../components/SignupFooter"
 
 import SignUpForm from '../components/SignUpForm'
 
@@ -9,7 +10,7 @@ const signup = () => {
     <div>
         <Header />
         <SignUpForm />
-        <MainCommonFooter/>
+        <SignupFooter />
     </div>
   )
 }

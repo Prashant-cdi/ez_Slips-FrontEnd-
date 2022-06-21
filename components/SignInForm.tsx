@@ -18,22 +18,31 @@ export interface Inputprops {
   imgsrc:string,
   alt: string,
   type: string
+  id: string,
+  classname: string,
   handleChange: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange}) => {
+export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange, id}) => {
   function handle(e:any){
     handleChange(e.target.value);
 }  
 
 return (
     <div className={styles.inputdiv}  >
-        <input type={type} name="" id="" placeholder={placeholder} className={styles.inputs} onChange={ handle } required/>
-        <span className={styles.inputimg} style={{height:"24px", width:"24px"}}><Image 
+
+        <input type={type} placeholder={placeholder} className={styles.inputs} onChange={ handle } id={id} required/>
+        <span  style={{height:"24px", width:"24px"}} className={styles.inputdivimg}>
+        
+        <Image 
         src={imgsrc}
         alt={alt}
-        layout="fill"
+        height="16"
+        width="16"
+        
+        // layout="fill"
         />
+
         </span>
     </div>
   )
@@ -75,9 +84,10 @@ const SignInForm:FC = () => {
           <form onSubmit={handleSubmit}>
 
             <Heading text="Sign In"/>
-            <p>Please enter your email and password</p>
-            <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="email" handleChange={setEmail} /> 
-            <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password" handleChange={setPassword}/> 
+            <hr />
+            <p className={styles.p1}>Please enter your email and password</p>
+            <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="email" handleChange={setEmail} id="emailid" classname="signininputs"/> 
+            <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password" handleChange={setPassword} id="passid" classname="signininputs"/> 
             <div className={styles.remember}>
               
               <input type="checkbox" name="" id="" /><span>Remember me on this device</span>

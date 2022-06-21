@@ -88,10 +88,12 @@ const MainCommonFooter:FC = () => {
   return (
     <div>
       <div className="flex align_item_center" style={footershadow}>
+    <div className="footer flex margin-auto">
 
-    <Leftfooter />
-    <Middlefooter />
+      <Leftfooter />
+      <Middlefooter />
       <FooterRight />
+    </div>
   </div>
   <Copyright /></div>
   )

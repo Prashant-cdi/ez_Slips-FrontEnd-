@@ -1,16 +1,16 @@
 import React, { FC, useEffect } from "react";
 import stylessignup from "../styles/SignUpForm.module.css";
 import { Button, Heading, Input } from "./SignInForm";
-import styles from "../styles/SignInForm.module.css";
+import styles from "../styles/SignUpForm.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { SIGNUP_USER } from "../graphqlOperations/mutations";
-import signup from '../pages/signup';
-
+import { SIGNUP_USER } from "../graphqlOperations/Signupuser";
+import signup from "../pages/signup";
+import Signuploader from "../pages/signUpLoader/[token]";
+// import SignUp from '@user/resolver/signUpResolver';
 
 const SignUpForm = () => {
-  
   const [name, setname] = useState("");
   const [organisation, setorganisation] = useState<string>("");
   const [email, setemail] = useState<string>("");
@@ -18,111 +18,110 @@ const SignUpForm = () => {
 
   const [signUp, { data, loading, error }] = useMutation(SIGNUP_USER);
 
+  var formData: object = {};
 
-  if (loading) return <h1>Loading</h1>;
-
-
-  function handleSubmit(e:any){
-   
+  async function handleSubmit(e: any) {
     e.preventDefault();
 
-
-    console.log("handlesubmit is run");
-    let formdata = {
+    const formData = {
       name: name,
-      organization_name: organisation,
+      organizationName: organisation,
       email: email,
-      contact_number: Contact,
-    };
+      contactNumber: Contact,
+    }
 
-    signUp({
+    const result =  await signUp({
       variables: {
-        input: formdata
-      }
-    })
+        input: formData,
+      },
+    });
 
-    if (error) {
-      console.log(error);
+    if (result) {
+      console.log(data)
+      console.log(result);
+      alert(data.SignUp.message);
     }
 
-    if (data) { 
-      console.log(data);
-      alert(data.signUp.successMessage);
-
-    }
-
-    if (loading) {
-      console.log("loading")
-    }
-
-    console.log("handlesubmit is run-------------last line");
   }
 
+ 
   return (
     <>
-    
-    {/* {data && <h1 style={{"textAlign": "center"}}>{data.signUp.successMessage}</h1>} */}
-    <div className={styles.signinform}>
-      <form action="" onSubmit={handleSubmit}>
+      {/* {data && <h1 style={{"textAlign": "center"}}>{data.signUp.successMessage}</h1>} */}
 
-    
-      <Heading text="Sign Up" />
-      
-      <Input
-        placeholder="Name"
-        imgsrc="/assets/images/coolicon.png"
-        alt={"coolicon"}
-        type="text"
-        handleChange={setname}
-      />
+      <div className={styles.signupform}>
+        <form onSubmit={handleSubmit}>
+          <Heading text="Sign Up" />
 
-      <Input
-        placeholder="Organisation Name"
-        imgsrc="/assets/images/organisation.png"
-        alt={"coolicon"}
-        type="text"
-        handleChange={setorganisation}
-        />
+          <hr />
+          <div className={styles.inputs}>
+            <Input
+              placeholder="Name"
+              imgsrc="/assets/images/coolicon.png"
+              alt={"coolicon"}
+              type="text"
+              handleChange={setname}
+              id="signupname"
+              classname={styles.signupinputs}
+            />
+          </div>
 
-      <Input
-        placeholder="Email"
-        imgsrc="/assets/images/email.png"
-        alt={"coolicon"}
-        type="email"
-        handleChange={setemail}
-        />
-        
-      <Input
-        placeholder="Contact Number"
-        imgsrc="/assets/images/contact.png"
-        alt={"coolicon"}
-        type="number"
-        handleChange={setContact}
-        />
-        
-      <p className={styles.para}>
-        By registering you agree to our{" "}
-        <Link href="/privacypolicy">
-          <span className={styles.link}>privacy policy</span>
-        </Link>{" "}
-        and all{" "}
-        <Link href="/terms">
-          <span className={styles.link}>terms and conditions</span>
-        </Link>
-      </p>
+          <div className={styles.inputs}>
+            <Input
+              placeholder="Organisation Name"
+              imgsrc="/assets/images/organisation.png"
+              alt={"coolicon"}
+              type="text"
+              handleChange={setorganisation}
+              id="signuporganisation"
+              classname="signupinputs"
+            />
+          </div>
 
+          <div className={styles.inputs}>
+            <Input
+              placeholder="Email"
+              imgsrc="/assets/images/email.png"
+              alt={"coolicon"}
+              type="email"
+              handleChange={setemail}
+              id="signupemail"
+              classname="signupinputs"
+            />
+          </div>
 
-      <Button text="Register" />
+          <div className={styles.inputs}>
+            <Input
+              placeholder="Contact Number"
+              imgsrc="/assets/images/contact.png"
+              alt={"coolicon"}
+              type="number"
+              handleChange={setContact}
+              id="signupContact"
+              classname="signupinputs"
+            />
+          </div>
+          <p className={styles.para}>
+            By registering you agree to our{" "}
+            <Link href="/privacypolicy">
+              <span className={styles.link}>privacy policy</span>
+            </Link>{" "}
+            and all{" "}
+            <Link href="/terms">
+              <span className={styles.link}>terms and conditions</span>
+            </Link>
+          </p>
 
-      </form>
+          <input type="submit" className={styles.register} />
+        </form>
 
-      <p className={stylessignup.lastpara}>
-        <span className={stylessignup.lastpara1st}>
-          Already have an Account
-        </span>
-        <span className={styles.link}>Sign In</span>
-      </p>
-    </div>
+        <div className={stylessignup.lastpara}>
+          <span className={stylessignup.lastpara1st}>
+            Already have an Account
+          </span>
+          <span className={styles.signinlink}>Sign In</span>
+        </div>
+      </div>
     </>
   );
 };

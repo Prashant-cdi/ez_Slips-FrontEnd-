@@ -9,18 +9,20 @@
  
 .footerLogo {
     font-family: Racing Sans One;
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 400;
     line-height: 50px;
     color: #47A296;
-    margin: 0px 0 0px 230px;
     display: inline-block;
     
 }
 
 .middlefooter{
-    margin-left: 76px;
-    display: flex;
+display: flex;
+width: 56%;
+justify-content: space-between;
+font-size: 17px;
+margin: 0 92px;
 }
 
 .rightfooter {
@@ -38,10 +40,21 @@
 
 
 .footerlink{
-    width: 125px;
-    margin: 0 10px auto;
-    text-align: center;
-    padding: 30px 0;
+
+  height: 24px;
+  width: 125px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  
+  /* identical to box height, or 141% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: #4D4D4D;
 }
 
 .right_header {
