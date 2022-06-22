@@ -1,9 +1,10 @@
-import React,{FC} from 'react'
+import React,{FC, useEffect} from 'react'
 import { Circles, Rings } from  'react-loader-spinner'
-import { useRouter } from 'next/router'
+import { useRouter,Router } from 'next/router'
 // import { useMutation } from "@apollo/client";
 import { useQuery } from '@apollo/client';
 import {USER_VERIFY} from "../../graphqlOperations/userVerification"
+import { NextResponse, NextRequest } from 'next/server'
 
 
 const Signuploader:FC = () => {
@@ -16,25 +17,41 @@ const Signuploader:FC = () => {
 
 const Post:FC = ():any => {
 
+
+
   const router = useRouter();
-  const token = String(router.query.token);
+
+  console.log(router.asPath.slice(14));
+  let token = router.asPath.slice(14)
   console.log(token)
-  console.log(typeof token)
+
 
   const {data, error, loading}= useQuery(USER_VERIFY,{
-  
       variables : {
         verificationId: token
       }
-  
-    // userVerification: token
   })
 
 
    
 
   if(loading) console.log("loading")
-  if(data) console.log(data);
+  if(data) {
+    console.log(data);
+    console.log(data.userVerification.message);
+    console.log("Router is ---------->",router);
+    // alert(data.userVerification.message);
+    if(data.userVerification.message=="User verified"){
+      // Router.push("/setpassword");
+    router.push("/setpassword")
+    }
+    else{
+      router.push("/signup")
+    }
+
+  }
+
+
   if(error) console.log(error);
 
   

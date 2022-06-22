@@ -8,7 +8,7 @@
 box-sizing: border-box;
 
 width: 420px;
-height: 440px;
+/* height: 440px; */
 left: 0px;
 top: 0px;
 
@@ -54,13 +54,12 @@ margin: 0 auto 20px;
 .signinform .p1{
     width: 239px;
 height: 52px;
-
-
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
 line-height: 24px;
+display: inline;
 
 /* or 200% */
 
@@ -159,4 +158,67 @@ line-height: 16px;
 
 
 color: #2E2E2E;
+}
+
+.emaildiv{
+    margin: 29.2px auto 19.4px;
+}
+
+.passworddiv{
+    margin-bottom: 21.4px;
+}
+
+.rememberdiv {
+    display: flex;
+    margin: auto;
+    width: 307.2px;
+}
+
+.checkBox {
+    width: 24px;
+height: 24px;
+left: 63px;
+top: 280px;
+
+border: 1px solid rgba(0, 0, 0, 0.36);
+border-radius: 15px;
+}
+
+.checkboxdiv {
+    margin: 0 0 15px 16px;
+}
+
+.rememberspan {
+    margin-left:15px
+}
+
+.rememberspan span {
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 16px;
+
+/* or 165% */
+
+color: #2E2E2E;
+}
+
+
+.signinbutton {
+    width: 308px;
+height: 50px;
+left: 56px;
+top: 320px;
+
+background: #47A296;
+border: 1px solid rgba(0, 0, 0, 0.16);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
+border-radius: 5px;
+color: #FFFFFF;
+}
+
+.forgotdiv{
+margin: 22px 56px 29px 259px;
 }

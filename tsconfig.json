@@ -24,6 +24,7 @@
     "*/*.ts",
     "**/*.tsx",
     "**/**/*.tsx"
+    // "**/**/..*.tsx"
 , "pages/_document.js", "graphqlOperations/Setpassword.js", "graphqlOperations/Signupuser.js"  ],
   "exclude": [
     "node_modules"

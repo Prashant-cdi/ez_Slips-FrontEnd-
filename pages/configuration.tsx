@@ -40,16 +40,21 @@ const footershadow : any = {
   return (
 
     <>
-    <div className={styles.header}>
-        <LeftHeader />
-        <MiddleHeader   
-    displayModal={displayModal} 
-    setdisplayModal={handlesetDisplaymodal} 
-    links={linkData.links} 
-    SetContentIndex= {SetContentIndex}  />
+   
+
+   
+        <div className={styles.header}>
         
-    
-    </div>
+          <div className="container">
+            <LeftHeader />
+            <MiddleHeader   
+            displayModal={displayModal} 
+            setdisplayModal={handlesetDisplaymodal} 
+            links={linkData.links} 
+            SetContentIndex= {SetContentIndex}  />
+          </div>
+
+        </div>
   
    
 

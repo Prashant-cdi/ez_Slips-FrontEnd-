@@ -7,67 +7,74 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SIGNUP_USER } from "../graphqlOperations/Signupuser";
 import signup from "../pages/signup";
-import Signuploader from "../pages/signUpLoader/[...token]";
+import Signuploader from "../pages/signUpLoader/[token]";
 // import SignUp from '@user/resolver/signUpResolver';
 import { useRouter } from "next/router";
 import Loadingpage from "../pages/loadingpage";
 
 const SignUpForm = () => {
-  
-  const router = useRouter();
+
   const [name, setname] = useState("");
   const [organisation, setorganisation] = useState<string>("");
   const [email, setemail] = useState<string>("");
   const [Contact, setContact] = useState<string>("");
   const [signUp, { data, loading, error }] = useMutation(SIGNUP_USER);
 
+  
 
-  async function handleSubmit (e: any) {
+  const router = useRouter();
 
+  async function handleSubmit(e: any) {
     e.preventDefault();
+    console.log("handleSubmmit is run");
+
    
 
-
-  const result =   await signUp({
-      variables: {
-        input:  {  
-          name: name,
-          organizationName: organisation,
-          email: email,
-          contactNumber: Contact,
-        }
+  const result = function task1(fun2:any){
+    console.log("result function is run")
+      const formData = {  
+        name: name,
+        organizationName: organisation,
+        email: email,
+        contactNumber: Contact,
       }
-    });
+     
+       signUp({
+        variables: {
+          input: formData,
+        }
+      });
+      fun2();
 
-console.log(result,"rewrewr")
+    } 
 
-
+    result(task2);
+  
+    function task2() {
+      
+      console.log("task2 is running");
+      console.log("loading",loading)
+      console.log("data",data)
+      console.log("error",error)
+  
       if(loading) {
         console.log("loading is running")
          return <Loadingpage/>
       }
 
-      else if(error){
-        console.log(error);
-      }
+      
+      else if(data) {
 
-       if(result) {
-
-        if(result?.data.signUp?.message === "User already exits! Please redirect to set-password page")
+        console.log(data)
+        if(data.signUp.message === "User already exits! Please redirect to set-password page")
         {
           console.log("this is running");
+        
           alert("You are already signed up. Set up your password"); 
-          localStorage.setItem('id',result.data.signUp.id);
-          console.log(localStorage.getItem('id'));
           router.push("/setpassword");
         }
-        else if(result?.data.signUp?.message === "User already exits!. Please redirect to login page"){
-          router.push("/signin");
-          alert("Email already exists. Redirecting to login page"); 
-        }
-        else{
-          alert(result?.data.signUp?.message);
-        }
+        else 
+        alert(data.signUp.message);
       } 
         
       
@@ -75,7 +82,7 @@ console.log(result,"rewrewr")
         else if(error) {
           console.log(error);
         }
-      
+      }
       console.log("handleSubmmit is run");
   
   }
@@ -99,7 +106,6 @@ console.log(result,"rewrewr")
               handleChange={setname}
               id="signupname"
               classname={styles.signupinputs}
-              value={name}
             />
           </div>
 
@@ -112,7 +118,6 @@ console.log(result,"rewrewr")
               handleChange={setorganisation}
               id="signuporganisation"
               classname="signupinputs"
-              value= {organisation}
             />
           </div>
 
@@ -125,7 +130,6 @@ console.log(result,"rewrewr")
               handleChange={setemail}
               id="signupemail"
               classname="signupinputs"
-              value={email}
             />
           </div>
 
@@ -138,7 +142,6 @@ console.log(result,"rewrewr")
               handleChange={setContact}
               id="signupContact"
               classname="signupinputs"
-              value={Contact}
             />
           </div>
           <p className={styles.para}>

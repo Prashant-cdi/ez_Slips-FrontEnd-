@@ -3,8 +3,27 @@ import signin from '../pages/signin';
 import styles from "../styles/SignInForm.module.css"
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useMutation } from '@apollo/client';
+import {SIGNIN} from "../graphqlOperations/signin"
+import { useRouter } from 'next/router';
+import Loadingpage from '../pages/loadingpage';
 
+
+function getcookie (name:string):string {
+  console.log("getcookie function is run --------------------->>>>>>>>>>>>>")
+const cName = name +"=";
+const cDecoded = decodeURIComponent(document.cookie);
+const cArr = cDecoded.split(';');
+var res:string="";
+cArr.forEach(val => {
+ if(val.indexOf(cName) === 0)
+ {
+   res = val.substring(cName.length);
+ }
+})
+return res;
+}
 
 
 export const Heading : FC<{text:string}> = ({text}) => {
@@ -20,10 +39,11 @@ export interface Inputprops {
   type: string
   id: string,
   classname: string,
+  value: string
   handleChange: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange, id}) => {
+export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange, id, value}) => {
   function handle(e:any){
     handleChange(e.target.value);
 }  
@@ -31,7 +51,7 @@ export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange,
 return (
     <div className={styles.inputdiv}  >
 
-        <input type={type} placeholder={placeholder} className={styles.inputs} onChange={ handle } id={id} required/>
+        <input type={type} placeholder={placeholder} className={styles.inputs} onChange={ handle } id={id} required value={value}/>
         <span  style={{height:"24px", width:"24px"}} className={styles.inputdivimg}>
         
         <Image 
@@ -51,7 +71,7 @@ return (
 
 
 export const Button:FC<{text:string}>= ({text}) => {
-
+  
  
   return (
  
@@ -68,36 +88,140 @@ export const Button:FC<{text:string}>= ({text}) => {
 
 
 const SignInForm:FC = () => {
+  const router= useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+   const [ Login, {loading, error, data} ]= useMutation( SIGNIN)
 
-  function handleSubmit(e:any) {
-    e.preventDefault();
-    console.log(email)
-    console.log(password)
-  }  
+
+  
+   if(loading) return <Loadingpage />
+
+   else if( error ) {
+    console.log(error);
+   }
+
+   else if(data) {
+    console.log(data);
+    console.log(data.login.message);
+    document.cookie = `token=${data.login.message}`;
+    alert(getcookie('token'));
+       if(data.login.token==null)
+        {
+          router.push("/")
+        }
+        else{
+          router.push("/configuration");
+        }
+   }
+      // if(data) {
+
+        
+      //   console.log("i am here");
+
+      //   console.log("token is "+ data.message);
+        
+      //   console.log(data);
+
+      //  
+
+        
+        
+      //   alert(getcookie('token'));
+      //   if(data.token==null)
+      //   {
+      //     // router.push("/")
+      //   }
+      //   else{
+      //     // router.push("/configuration");
+      //   }
+        
+        
+      // } 
+        
+  
+      
+
+  //  , {
+    
+  //   // if(error) console.log(error);
+  //  onCompleted: (data)=>{
+
+  //       // if(loading) return <Loadingpage />
+  //       // if(error) console.log(error);
+  //       console.log(data);
+  //       console.log("i am here")
+  //       console.log("token is "+ data.message);
+  //       // alert("login successful")
+  //       document.cookie = `token=${data.message}`;
+  //       alert(getcookie('token'));
+  //       if(data.token==null)
+  //       {
+  //         // router.push("/")
+  //       }
+  //       else{
+  //         // router.push("/configuration");
+  //       }
+  //   }})
+  
+
+  // function handleSubmit(e:any) {
+  //   e.preventDefault();
+  //   console.log("handlesubmit is run");
+  
+  // }  
 
   return (
 
+    
     <div className={styles.signinform} >
+        
 
-          <form onSubmit={handleSubmit}>
+
+          <form onSubmit= {(e) => {
+            e.preventDefault(); 
+            Login({variables:{
+              input : {
+                email,
+                password
+              }
+            }})
+
+            setEmail("");
+            setPassword("");
+          }} >
+            
+      
 
             <Heading text="Sign In"/>
             <hr />
             <p className={styles.p1}>Please enter your email and password</p>
-            <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="email" handleChange={setEmail} id="emailid" classname="signininputs"/> 
-            <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password" handleChange={setPassword} id="passid" classname="signininputs"/> 
-            <div className={styles.remember}>
-              
-              <input type="checkbox" name="" id="" /><span>Remember me on this device</span>
-            
+
+            <div className={styles.emaildiv}>
+              <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="email" handleChange={setEmail} id="emailid" classname="signininputs" value={email}/> 
             </div>
 
-            <Button text="Sign in"/>
+            <div className={styles.passworddiv}>
+              <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password" handleChange={setPassword} id="passid" classname="signininputs" value={password}/> 
+            </div>
+
+            <div className={styles.rememberdiv}>
+             
+              <div className={styles.checkboxdiv}>
+                  <input type="checkbox" name="" id="" className={styles.checkBox}/> 
+              </div> 
+              <div className={styles.rememberspan}>
+                <span>Remember me on this device</span>
+              </div>
+            
+            </div>
+            
+            <button type="submit" className={styles.signinbutton} >Sign in</button>            
             <div className={styles.forgotdiv}>
               <Link href="/forgotpassword"><a>Forgot password</a></Link>
             </div>
+          
+
           </form>
         
             
