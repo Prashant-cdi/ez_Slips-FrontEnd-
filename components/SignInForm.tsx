@@ -8,22 +8,24 @@ import { useMutation } from '@apollo/client';
 import {SIGNIN} from "../graphqlOperations/signin"
 import { useRouter } from 'next/router';
 import Loadingpage from '../pages/loadingpage';
+import SigninginLoader from './SigninginLoader';
 
 
-function getcookie (name:string):string {
-  console.log("getcookie function is run --------------------->>>>>>>>>>>>>")
-const cName = name +"=";
-const cDecoded = decodeURIComponent(document.cookie);
-const cArr = cDecoded.split(';');
-var res:string="";
-cArr.forEach(val => {
- if(val.indexOf(cName) === 0)
- {
-   res = val.substring(cName.length);
- }
-})
-return res;
-}
+
+// function getcookie (name:string):string {
+//   console.log("getcookie function is run --------------------->>>>>>>>>>>>>")
+// const cName = name +"=";
+// const cDecoded = decodeURIComponent(document.cookie);
+// const cArr = cDecoded.split(';');
+// var res:string="";
+// cArr.forEach(val => {
+//  if(val.indexOf(cName) === 0)
+//  {
+//    res = val.substring(cName.length);
+//  }
+// })
+// return res;
+// }
 
 
 export const Heading : FC<{text:string}> = ({text}) => {
@@ -41,9 +43,10 @@ export interface Inputprops {
   classname: string,
   value: string
   handleChange: React.Dispatch<React.SetStateAction<string>>
+  style: object;
 }
 
-export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange, id, value}) => {
+export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange, id, value, style}) => {
   function handle(e:any){
     handleChange(e.target.value);
 }  
@@ -51,7 +54,7 @@ export const Input:FC<Inputprops> = ({placeholder,imgsrc,alt,type, handleChange,
 return (
     <div className={styles.inputdiv}  >
 
-        <input type={type} placeholder={placeholder} className={styles.inputs} onChange={ handle } id={id} required value={value}/>
+        <input type={type} placeholder={placeholder} className={styles.inputs} onChange={ handle } id={id} required value={value} style={style}/>
         <span  style={{height:"24px", width:"24px"}} className={styles.inputdivimg}>
         
         <Image 
@@ -95,7 +98,7 @@ const SignInForm:FC = () => {
 
 
   
-   if(loading) return <Loadingpage />
+   if(loading) return <SigninginLoader />
 
    else if( error ) {
     console.log(error);
@@ -103,9 +106,10 @@ const SignInForm:FC = () => {
 
    else if(data) {
     console.log(data);
-    console.log(data.login.message);
-    document.cookie = `token=${data.login.message}`;
-    alert(getcookie('token'));
+    console.log(data.login.token);
+    document.cookie = 'token='+data.login.token+'; path=/ ';
+    console.log(document.cookie);
+    // alert(getcookie('token'));
        if(data.login.token==null)
         {
           router.push("/")
@@ -198,17 +202,21 @@ const SignInForm:FC = () => {
             <p className={styles.p1}>Please enter your email and password</p>
 
             <div className={styles.emaildiv}>
-              <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="email" handleChange={setEmail} id="emailid" classname="signininputs" value={email}/> 
+              <Input placeholder="Email" imgsrc="/assets/images/mail_open.png" alt={"mail_open"} type="email" handleChange={setEmail} id="emailid" classname="signininputs" value={email} style={{}}/> 
             </div>
 
             <div className={styles.passworddiv}>
-              <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password" handleChange={setPassword} id="passid" classname="signininputs" value={password}/> 
+              <Input placeholder="Password" imgsrc="/assets/images/lock_closed.png" alt={"lock_closed"} type="password" handleChange={setPassword} id="passid" classname="signininputs" value={password} style={{}}/> 
             </div>
 
             <div className={styles.rememberdiv}>
              
               <div className={styles.checkboxdiv}>
                   <input type="checkbox" name="" id="" className={styles.checkBox}/> 
+                  {/* <input type="checkbox" id="_checkbox" /> */}
+                    {/* <label htmlFor="_checkbox"> */}
+                      {/* <div id="tick_mark"></div> */}
+                    {/* </label> */}
               </div> 
               <div className={styles.rememberspan}>
                 <span>Remember me on this device</span>
@@ -218,7 +226,7 @@ const SignInForm:FC = () => {
             
             <button type="submit" className={styles.signinbutton} >Sign in</button>            
             <div className={styles.forgotdiv}>
-              <Link href="/forgotpassword"><a>Forgot password</a></Link>
+              <Link href="/password_reset_email_id"><a>Forgot password</a></Link>
             </div>
           
 

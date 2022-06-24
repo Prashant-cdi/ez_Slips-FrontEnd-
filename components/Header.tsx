@@ -145,7 +145,7 @@ interface ModalWrapperI {
 
 export const ModalWrapper:FC<ModalWrapperI> = ({displayModal , contentIndex, setdisplayModal}) => {
 
-  var customStyleWrapper = {
+  var customStyleWrapper:any = {
     "display": "unset"    
   }
   
@@ -160,7 +160,9 @@ export const ModalWrapper:FC<ModalWrapperI> = ({displayModal , contentIndex, set
   if(!displayModal)
   {
     customStyleWrapper ={
-      "display": "none"  
+      "display": "none",  
+      "transition-delay": "0.5s"
+      // "visibility" :"hidden"
     }
   }
 

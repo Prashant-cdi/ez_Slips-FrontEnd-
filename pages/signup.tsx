@@ -7,12 +7,15 @@ import SignUpForm from '../components/SignUpForm'
 
 const signup = () => {
   return (
+
     <div>
         <Header />
         <SignUpForm />
         <SignupFooter />
     </div>
+    
   )
 }
+
 
 export default signup

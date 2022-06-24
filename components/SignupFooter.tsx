@@ -10,7 +10,7 @@ import Copyright from './Copyright';
 
 const footerstyle : any = {
     "boxShadow": "1px 1px 6px grey",
-    "height": "167px"
+    "height": "160px"
   }
   
   
@@ -81,7 +81,7 @@ const FooterRightContactbutton = () => {
   return (
     <div>
         <div className="buttondiv">
-            <Link href="/contact">
+            <Link href="/contactForm">
             <button type="button" className="contactbutton">Contact</button>
             </Link>
         </div>

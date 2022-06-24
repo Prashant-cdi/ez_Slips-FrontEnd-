@@ -7,7 +7,7 @@ import Copyright from './Copyright';
 
 const footerstyle : any = {
     "boxShadow": "1px 1px 6px grey",
-    "height": "167px"
+    "height": "160px"
   }
   
   
@@ -15,22 +15,22 @@ const footerstyle : any = {
   function FooterRight() {
   
       const customStyle : any = {
-          "list-style-type":" none",
+          "listStyleType":" none",
           "color": "#47a296",
           "width": "15%",
-          "text-align": "center"
+          "textAlign": "center"
       }
   
       const buttonStyle:any = {
         "height": "48px",
-        "margin-top": "20px",
+        "marginTop": "20px",
   "width": "112px",
   "background": "#47a296",
   "border": "none",
-  "border-radius": "5px",
+  "borderRadius": "5px",
   "color": "white",
-  "font-size": "18px",
-  "font-weight": "bold",
+  "fontSize": "18px",
+  "fontWeight": "bold",
       }
   
       return (

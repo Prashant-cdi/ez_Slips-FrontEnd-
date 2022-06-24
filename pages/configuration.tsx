@@ -12,11 +12,64 @@ import { Leftfooter, Middlefooter } from '../components/Footer';
 import RightFooterdashboard from '../components/RightFooterdashboard';
 import LeftDashboardComponent from '../components/LeftDashboardComponent';
 import RightConfiguration from '../components/RightConfiguration';
+import SignupFooter from '../components/SignupFooter';
+import Link from "next/link"
+import { useRouter } from 'next/router';
 
 
+
+
+
+
+function getcookie(key:string) {
+
+  const value = document.cookie;
+  key= key+"=";
+  var tokencookie;
+  const parts = value.split('; ');
+  
+  console.log(parts)
+  parts.forEach((val)=>{
+  if(val.indexOf(key)===0){
+    tokencookie = val.substring(key.length);
+  }
+})
+  return tokencookie;
+}
+
+
+
+
+
+const Rightheaderlogout:FC = () => {
+  console.log(getcookie("token"));
+  return(
+
+    <div className="buttondiv">
+    <Link href="/signin">
+   <button type="button" className="logoutbutton" onClick= {()=>
+   {
+     document.cookie = "token=; Expires=Thu, 01 Jan 1970 00:00:00 UTC; Path=/"
+     
+     console.log(document.cookie);
+   }
+   }
+   >Logout</button>
+    </Link>
+</div>
+    )
+}
 
 
 const Dashboard:FC = () => {
+  const router = useRouter();
+
+
+if(!getcookie("token")) {
+  alert("unauthorized access");
+  router.push("/signin");
+}
+
     const [displayModal , setDisplayModal] = useState<boolean>(false);
   
     const [contentIndex, setContentIndex ] = useState<number>(0);
@@ -52,6 +105,8 @@ const footershadow : any = {
             setdisplayModal={handlesetDisplaymodal} 
             links={linkData.links} 
             SetContentIndex= {SetContentIndex}  />
+
+            <Rightheaderlogout />
           </div>
 
         </div>
@@ -76,7 +131,7 @@ const footershadow : any = {
 
 
 
-<div className="flex align_item_center" style={footershadow}>
+{/* <div className="flex align_item_center" style={footershadow}>
     <Leftfooter />
     <Middlefooter />
 
@@ -84,7 +139,9 @@ const footershadow : any = {
     
     </div>
 
-<Copyright /> 
+<Copyright />  */}
+
+<SignupFooter />
   </>
     
     

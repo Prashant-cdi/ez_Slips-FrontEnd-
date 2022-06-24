@@ -6,7 +6,6 @@ import { useQuery } from '@apollo/client';
 import {USER_VERIFY} from "../../graphqlOperations/userVerification"
 import { NextResponse, NextRequest } from 'next/server'
 
-
 const Signuploader:FC = () => {
   return (
     <div className='loader'>
@@ -17,32 +16,36 @@ const Signuploader:FC = () => {
 
 const Post:FC = ():any => {
 
-
-
   const router = useRouter();
 
   console.log(router.asPath.slice(14));
   let token = router.asPath.slice(14)
+
   console.log(token)
 
 
-  const {data, error, loading}= useQuery(USER_VERIFY,{
+  const  {data, error, loading} = useQuery(USER_VERIFY,
+    {
       variables : {
-        verificationId: token
-      }
-  })
-
-
+      verificationId: token
+    }
+  }
+  )
    
-
   if(loading) console.log("loading")
+
   if(data) {
     console.log(data);
     console.log(data.userVerification.message);
+    console.log("id is "+data.userVerification.id);
     console.log("Router is ---------->",router);
-    // alert(data.userVerification.message);
+    
+    localStorage.setItem('id',`${data.userVerification.id}`)
+
+    console.log("localstorage id is"+localStorage.getItem('id'));
+
     if(data.userVerification.message=="User verified"){
-      // Router.push("/setpassword");
+
     router.push("/setpassword")
     }
     else{

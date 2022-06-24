@@ -100,6 +100,7 @@ console.log(result,"rewrewr")
               id="signupname"
               classname={styles.signupinputs}
               value={name}
+              style={{}}
             />
           </div>
 
@@ -113,6 +114,8 @@ console.log(result,"rewrewr")
               id="signuporganisation"
               classname="signupinputs"
               value= {organisation}
+
+              style={{}}
             />
           </div>
 
@@ -126,6 +129,7 @@ console.log(result,"rewrewr")
               id="signupemail"
               classname="signupinputs"
               value={email}
+              style={{}}
             />
           </div>
 
@@ -139,6 +143,7 @@ console.log(result,"rewrewr")
               id="signupContact"
               classname="signupinputs"
               value={Contact}
+              style={{}}
             />
           </div>
           <p className={styles.para}>
@@ -159,7 +164,7 @@ console.log(result,"rewrewr")
           <span className={stylessignup.lastpara1st}>
             Already have an Account
           </span>
-          <span className={styles.signinlink}>Sign In</span>
+          <span className={styles.signinlink}><Link href="/signin">Sign In</Link> </span>
         </div>
       </div>
     </>
